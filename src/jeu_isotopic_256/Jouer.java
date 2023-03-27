@@ -30,15 +30,16 @@ public class Jouer {
     private final String PartieSauv="PartieSauv.txt";
     int Tgrille;
     private Element[][] grille;
-    Element H=new Element("    H   ",2);
-    Element He=new Element("   He   ",4);
-    Element Be=new ElementInstable("  Be  ",8,6);
-    Element O=new Element("   O   ",16);
-    Element P=new ElementInstable(" P ",32,24);
-    Element Ni=new Element("   Ni  ",64);
+    Element H=new Element("H",2);
+    Element He=new Element("He",4);
+    Element Be=new ElementInstable("Be",8,6);
+    Element O=new Element("O",16);
+    Element P=new ElementInstable("P",32,24);
+    Element Ni=new Element("Ni",64);
     Element Sn=new ElementInstable("Sn",128,96);
-    Element N=new Element("   N  ",256);
-    Element vide =new Element("         ");
+    Element N=new Element("N",256);
+    Element Ge=new Element("Ge",512);
+    Element vide =new Element(" ");
     private final Element ClassementElement[]={H,He,Be,O,P,Ni,Sn,N}; 
 
     public Jouer(int Tgrille) {
@@ -387,21 +388,21 @@ public class Jouer {
         for (int i=0;i<Tgrille;i++){
             for (int j=0;j<Tgrille;j++){
                 switch (grille[i][j].getNomEl()) {
-                    case "  Be  " ->                         {
+                    case "Be" ->                         {
                             int tempVie=grille[i][j].getTempsVie();
                             //System.out.println(tempVie);
                             if (tempVie==0)
                                 grille[i][j]=vide;
                             else
-                                grille[i][j]=new ElementInstable("  Be  ",8,tempVie-1);
+                                grille[i][j]=new ElementInstable("Be",8,tempVie-1);
                         }
-                    case " P " ->                         {
+                    case "P" ->                         {
                             int tempVie=grille[i][j].getTempsVie();
                             //System.out.println(tempVie);
                             if (tempVie==0)
                                 grille[i][j]=vide;
                             else
-                                grille[i][j]=new ElementInstable(" P ",32,tempVie-1);
+                                grille[i][j]=new ElementInstable("P",32,tempVie-1);
                         }
                     case "Sn" ->                         {
                             int tempVie=grille[i][j].getTempsVie();

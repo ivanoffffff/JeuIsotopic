@@ -28,7 +28,7 @@ public class Element {
     }
 
     public String toString() {
-        if (NomEl.equals("         ")==true){
+        if (NomEl.equals(" ")==true){
             return NomEl;}
         else 
             return NomEl + NumeroEl ;
