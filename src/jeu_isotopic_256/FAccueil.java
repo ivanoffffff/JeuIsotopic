@@ -18,12 +18,16 @@ public class FAccueil extends javax.swing.JFrame {
     private FJouer fichJouer;
     
     
-    
     public FAccueil() {
-        this.setLocation(550,300);
+        this.setLocation(470,200);
         this.setTitle(" Accueil du jeu");
         initComponents();
         fichChoix = new FChoixJeu(this,false);
+        fichJouer = new FJouer(this,false);
+    }
+
+    public FJouer getFichJouer() {
+        return fichJouer;
     }
 
     /**
@@ -35,76 +39,46 @@ public class FAccueil extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        PA_Image = new javax.swing.JPanel();
-        bJouer = new javax.swing.JButton();
         bCharger = new javax.swing.JButton();
-        JImage = new javax.swing.JLabel();
+        bJouer = new javax.swing.JButton();
+        jLabelPageAccueil = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jeu_isotopic_256/Jeu Isotopic 256.png"))); // NOI18N
-        jLabel1.setLabelFor(jLabel1);
-
-        PA_Image.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-
-        bJouer.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        bJouer.setForeground(new java.awt.Color(153, 0, 0));
-        bJouer.setText("Jouer");
-        bJouer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        bJouer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bJouerActionPerformed(evt);
-            }
-        });
-
+        bCharger.setBackground(new java.awt.Color(102, 102, 255));
         bCharger.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        bCharger.setForeground(new java.awt.Color(153, 0, 0));
-        bCharger.setText("Charger");
+        bCharger.setForeground(new java.awt.Color(255, 255, 255));
+        bCharger.setText("Charger partie");
         bCharger.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        bCharger.setMaximumSize(new java.awt.Dimension(130, 25));
+        bCharger.setMinimumSize(new java.awt.Dimension(130, 25));
+        bCharger.setPreferredSize(new java.awt.Dimension(130, 25));
         bCharger.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bChargerActionPerformed(evt);
             }
         });
+        getContentPane().add(bCharger, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, 160, 40));
 
-        javax.swing.GroupLayout PA_ImageLayout = new javax.swing.GroupLayout(PA_Image);
-        PA_Image.setLayout(PA_ImageLayout);
-        PA_ImageLayout.setHorizontalGroup(
-            PA_ImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PA_ImageLayout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(bJouer)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bCharger)
-                .addGap(87, 87, 87))
-            .addGroup(PA_ImageLayout.createSequentialGroup()
-                .addGap(499, 499, 499)
-                .addComponent(JImage)
-                .addContainerGap(62, Short.MAX_VALUE))
-        );
-        PA_ImageLayout.setVerticalGroup(
-            PA_ImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PA_ImageLayout.createSequentialGroup()
-                .addGap(178, 178, 178)
-                .addComponent(JImage)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 283, Short.MAX_VALUE)
-                .addGroup(PA_ImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bCharger)
-                    .addComponent(bJouer))
-                .addGap(99, 99, 99))
-        );
+        bJouer.setBackground(new java.awt.Color(255, 0, 255));
+        bJouer.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        bJouer.setForeground(new java.awt.Color(255, 255, 255));
+        bJouer.setText("Nouvelle partie");
+        bJouer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        bJouer.setMaximumSize(new java.awt.Dimension(130, 25));
+        bJouer.setMinimumSize(new java.awt.Dimension(130, 25));
+        bJouer.setPreferredSize(new java.awt.Dimension(130, 25));
+        bJouer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bJouerActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bJouer, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 160, 40));
+        bJouer.getAccessibleContext().setAccessibleDescription("");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PA_Image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PA_Image, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jLabelPageAccueil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Jeu Isotopic 256.png"))); // NOI18N
+        getContentPane().add(jLabelPageAccueil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -155,10 +129,8 @@ public class FAccueil extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel JImage;
-    private javax.swing.JPanel PA_Image;
     private javax.swing.JButton bCharger;
     private javax.swing.JButton bJouer;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelPageAccueil;
     // End of variables declaration//GEN-END:variables
 }

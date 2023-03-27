@@ -15,7 +15,12 @@ public class Jeu_Isotopic_256 {
 
     public static void main(String[] args) throws ErreurInstruction, IOException, InterruptedException {
         
-       Scanner sc= new Scanner(System.in);
+       FAccueil fichAccueil = new FAccueil();
+       
+       fichAccueil.setVisible(true);
+       
+       /*
+        Scanner sc= new Scanner(System.in);
        String Taillegrille="0";
        String ElmaxS="";
        String choix="";
@@ -87,7 +92,7 @@ public class Jeu_Isotopic_256 {
             Partie.deplacerG();
             Partie.afficher();
             Partie.deplacerB();
-            Partie.afficher();*/
+            Partie.afficher();
             //Partie.debuterTest(Tgrille);                
             Partie.debuter(Tgrille);
 
@@ -170,6 +175,6 @@ public class Jeu_Isotopic_256 {
                     }
                 }
             }
-        }
+        }*/
     }
 }

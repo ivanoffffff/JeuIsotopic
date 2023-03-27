@@ -14,6 +14,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import javax.swing.JLabel;
 
 /*
  Andre Léonard
@@ -104,6 +105,14 @@ public class Jouer {
         System.out.println();
     }
 
+     public void afficher(JLabel [][]tablab){
+        for (int i=0;i<tablab.length;i++){
+            for (int k=0;k<tablab[i].length;k++){
+                tablab[i][k].setText(grille[i][k].toString());  //.setIcon() après
+            }
+        }
+    }
+    
     public boolean verifVide(int a,int b){
         if (grille[a][b].equals(vide))
             return true;

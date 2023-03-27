@@ -4,6 +4,12 @@
  */
 package jeu_isotopic_256;
 
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import javax.swing.Icon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Lubos
@@ -13,6 +19,11 @@ public class FJouer extends javax.swing.JDialog {
     /**
      * Creates new form FJouer
      */
+    private JLabel[][]tabLab;
+    private int Tgrille;
+    private Jouer Partie;
+    //private final Icon ClassementElement[]={mm_choixjeu.png}; 
+    
     public FJouer(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -27,22 +38,73 @@ public class FJouer extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pGrille = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        javax.swing.GroupLayout pGrilleLayout = new javax.swing.GroupLayout(pGrille);
+        pGrille.setLayout(pGrilleLayout);
+        pGrilleLayout.setHorizontalGroup(
+            pGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 448, Short.MAX_VALUE)
+        );
+        pGrilleLayout.setVerticalGroup(
+            pGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 496, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(pGrille, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(pGrille, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    public void Init(int Tgrille){
+        this.Tgrille=Tgrille;
+        Partie=new Jouer(Tgrille);
+        this.pGrille.removeAll();
+        //créer le tableau de labels
+        tabLab = new JLabel[Tgrille][Tgrille];
+        //créer un gestionnaire de positionnement et l’associer au panel
+        GridLayout gest = new GridLayout(0,Tgrille);
+        pGrille.setLayout(gest);
+        //créer les labels
+        for (int i=0;i<Tgrille;i++){
+            for (int j=0; j<Tgrille;j++){
+                    
+                // créer un label
+                JLabel lab= new JLabel ();
+                // définir la taille du label
+                Dimension dim = new Dimension(150,150);
+                lab.setPreferredSize(dim);
+                // ajouter le label dans le tableau
+                tabLab[i][j]=lab;
+                // ajouter le label dans le panel
+                pGrille.add(tabLab[i][j]);
+            }
+        }
+        Partie.debuter(Tgrille);
+        Partie.afficher(tabLab);
+    }
+
+   
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -86,5 +148,6 @@ public class FJouer extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel pGrille;
     // End of variables declaration//GEN-END:variables
 }
