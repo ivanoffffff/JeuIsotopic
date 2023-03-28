@@ -4,6 +4,8 @@
  */
 package jeu_isotopic_256;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Lubos
@@ -15,6 +17,9 @@ public class FChoixJeu extends javax.swing.JDialog {
      */
     
     private FJouer fichJouer;
+    private int Elmax;
+    private int Tgrille;
+    private String ElmaxNom;
     
     public FChoixJeu(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -26,10 +31,37 @@ public class FChoixJeu extends javax.swing.JDialog {
         RadioBouton3x3.setOpaque(false);
         RadioBouton5x5.setOpaque(false);
         jPanelBoutonElmax.setOpaque(false);
-        RadioBoutonSn.setOpaque(false);
-        RadioBoutonN.setOpaque(false);
-        RadioBoutonGe.setOpaque(false);
+        RadioBoutonSn128.setOpaque(false);
+        RadioBoutonN256.setOpaque(false);
+        RadioBoutonGe512.setOpaque(false);
+        
+    }
+    
+    
+    private int TgrilleSelect(){ //permet de savoir quelle taille de grille l'utilisateur a choisi
+        if (RadioBouton3x3.isSelected())
+            Tgrille=3;
+        
+        else if(RadioBouton4x4.isSelected())
+            Tgrille=4;
+        
+        else if(RadioBouton5x5.isSelected())
+            Tgrille=5;
+        
+        return Tgrille;
+    }
+    
+    private int ElmaxSelect(){ //  permet de savoir quel élément max l'utilisteur a choisi
+        if (RadioBoutonSn128.isSelected())
+            Elmax=128;
+        
+        else if(RadioBouton4x4.isSelected())
+            Elmax=256;
+        
+        else if(RadioBouton5x5.isSelected())
+            Elmax=512;
 
+        return Elmax;
     }
 
     /**
@@ -50,9 +82,9 @@ public class FChoixJeu extends javax.swing.JDialog {
         RadioBouton5x5 = new javax.swing.JRadioButton();
         bJouer = new javax.swing.JButton();
         jPanelBoutonElmax = new javax.swing.JPanel();
-        RadioBoutonN = new javax.swing.JRadioButton();
-        RadioBoutonSn = new javax.swing.JRadioButton();
-        RadioBoutonGe = new javax.swing.JRadioButton();
+        RadioBoutonN256 = new javax.swing.JRadioButton();
+        RadioBoutonSn128 = new javax.swing.JRadioButton();
+        RadioBoutonGe512 = new javax.swing.JRadioButton();
         jLabelIntermediaire = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -137,34 +169,34 @@ public class FChoixJeu extends javax.swing.JDialog {
 
         jPanelBoutonElmax.setForeground(java.awt.SystemColor.menu);
 
-        bGroupeEl.add(RadioBoutonN);
-        RadioBoutonN.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 30)); // NOI18N
-        RadioBoutonN.setSelected(true);
-        RadioBoutonN.setText("N 256");
-        RadioBoutonN.setBorder(null);
-        RadioBoutonN.addActionListener(new java.awt.event.ActionListener() {
+        bGroupeEl.add(RadioBoutonN256);
+        RadioBoutonN256.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 30)); // NOI18N
+        RadioBoutonN256.setSelected(true);
+        RadioBoutonN256.setText("N 256");
+        RadioBoutonN256.setBorder(null);
+        RadioBoutonN256.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RadioBoutonNActionPerformed(evt);
+                RadioBoutonN256ActionPerformed(evt);
             }
         });
 
-        bGroupeEl.add(RadioBoutonSn);
-        RadioBoutonSn.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 30)); // NOI18N
-        RadioBoutonSn.setText("Sn 128");
-        RadioBoutonSn.setBorder(null);
-        RadioBoutonSn.addActionListener(new java.awt.event.ActionListener() {
+        bGroupeEl.add(RadioBoutonSn128);
+        RadioBoutonSn128.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 30)); // NOI18N
+        RadioBoutonSn128.setText("Sn 128");
+        RadioBoutonSn128.setBorder(null);
+        RadioBoutonSn128.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RadioBoutonSnActionPerformed(evt);
+                RadioBoutonSn128ActionPerformed(evt);
             }
         });
 
-        bGroupeEl.add(RadioBoutonGe);
-        RadioBoutonGe.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 30)); // NOI18N
-        RadioBoutonGe.setText("Ge 512");
-        RadioBoutonGe.setBorder(null);
-        RadioBoutonGe.addActionListener(new java.awt.event.ActionListener() {
+        bGroupeEl.add(RadioBoutonGe512);
+        RadioBoutonGe512.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 30)); // NOI18N
+        RadioBoutonGe512.setText("Ge 512");
+        RadioBoutonGe512.setBorder(null);
+        RadioBoutonGe512.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RadioBoutonGeActionPerformed(evt);
+                RadioBoutonGe512ActionPerformed(evt);
             }
         });
 
@@ -174,11 +206,11 @@ public class FChoixJeu extends javax.swing.JDialog {
             jPanelBoutonElmaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBoutonElmaxLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(RadioBoutonSn)
+                .addComponent(RadioBoutonSn128)
                 .addGap(32, 32, 32)
-                .addComponent(RadioBoutonN)
+                .addComponent(RadioBoutonN256)
                 .addGap(31, 31, 31)
-                .addComponent(RadioBoutonGe)
+                .addComponent(RadioBoutonGe512)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelBoutonElmaxLayout.setVerticalGroup(
@@ -186,9 +218,9 @@ public class FChoixJeu extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBoutonElmaxLayout.createSequentialGroup()
                 .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jPanelBoutonElmaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RadioBoutonN)
-                    .addComponent(RadioBoutonSn)
-                    .addComponent(RadioBoutonGe))
+                    .addComponent(RadioBoutonN256)
+                    .addComponent(RadioBoutonSn128)
+                    .addComponent(RadioBoutonGe512))
                 .addGap(20, 20, 20))
         );
 
@@ -207,36 +239,44 @@ public class FChoixJeu extends javax.swing.JDialog {
     }//GEN-LAST:event_bRetourActionPerformed
 
     private void RadioBouton4x4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioBouton4x4ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_RadioBouton4x4ActionPerformed
 
     private void RadioBouton3x3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioBouton3x3ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_RadioBouton3x3ActionPerformed
 
     private void RadioBouton5x5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioBouton5x5ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_RadioBouton5x5ActionPerformed
 
     private void bJouerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bJouerActionPerformed
         
+        Tgrille=TgrilleSelect();
+        Elmax=ElmaxSelect();
+        switch (Elmax) {
+            case 128 -> ElmaxNom="Sn";
+            case 256 -> ElmaxNom="N";
+            case 512 -> ElmaxNom="Ge";
+            default -> {
+            }
+        }
         FJouer f=((FAccueil)getParent()).getFichJouer();
-        f.Init(4);
+        f.Init(Tgrille);
         this.setVisible(false);
         f.setVisible(true);
+        JOptionPane.showMessageDialog(this, "Vous avez choisi une grille "+Tgrille+"x"+Tgrille+" et l'élément "+ElmaxNom+Elmax+" à atteindre ");
+        
     }//GEN-LAST:event_bJouerActionPerformed
 
-    private void RadioBoutonNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioBoutonNActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RadioBoutonNActionPerformed
+    private void RadioBoutonN256ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioBoutonN256ActionPerformed
 
-    private void RadioBoutonSnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioBoutonSnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RadioBoutonSnActionPerformed
+    }//GEN-LAST:event_RadioBoutonN256ActionPerformed
 
-    private void RadioBoutonGeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioBoutonGeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RadioBoutonGeActionPerformed
+    private void RadioBoutonSn128ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioBoutonSn128ActionPerformed
+
+    }//GEN-LAST:event_RadioBoutonSn128ActionPerformed
+
+    private void RadioBoutonGe512ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioBoutonGe512ActionPerformed
+
+    }//GEN-LAST:event_RadioBoutonGe512ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,6 +316,7 @@ public class FChoixJeu extends javax.swing.JDialog {
                     }
                 });
                 dialog.setVisible(true);
+                
             }
         });
     }
@@ -284,9 +325,9 @@ public class FChoixJeu extends javax.swing.JDialog {
     private javax.swing.JRadioButton RadioBouton3x3;
     private javax.swing.JRadioButton RadioBouton4x4;
     private javax.swing.JRadioButton RadioBouton5x5;
-    private javax.swing.JRadioButton RadioBoutonGe;
-    private javax.swing.JRadioButton RadioBoutonN;
-    private javax.swing.JRadioButton RadioBoutonSn;
+    private javax.swing.JRadioButton RadioBoutonGe512;
+    private javax.swing.JRadioButton RadioBoutonN256;
+    private javax.swing.JRadioButton RadioBoutonSn128;
     private javax.swing.ButtonGroup bGroupeEl;
     private javax.swing.ButtonGroup bGroupeTaille;
     private javax.swing.JButton bJouer;

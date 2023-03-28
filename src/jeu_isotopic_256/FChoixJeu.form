@@ -175,11 +175,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="RadioBoutonSn" min="-2" max="-2" attributes="0"/>
+                  <Component id="RadioBoutonSn128" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                  <Component id="RadioBoutonN" min="-2" max="-2" attributes="0"/>
+                  <Component id="RadioBoutonN256" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                  <Component id="RadioBoutonGe" min="-2" max="-2" attributes="0"/>
+                  <Component id="RadioBoutonGe512" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -189,9 +189,9 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="17" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="RadioBoutonN" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="RadioBoutonSn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="RadioBoutonGe" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="RadioBoutonN256" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="RadioBoutonSn128" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="RadioBoutonGe512" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
@@ -199,7 +199,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JRadioButton" name="RadioBoutonN">
+        <Component class="javax.swing.JRadioButton" name="RadioBoutonN256">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="bGroupeEl"/>
@@ -214,10 +214,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RadioBoutonNActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RadioBoutonN256ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="RadioBoutonSn">
+        <Component class="javax.swing.JRadioButton" name="RadioBoutonSn128">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="bGroupeEl"/>
@@ -231,10 +231,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RadioBoutonSnActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RadioBoutonSn128ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="RadioBoutonGe">
+        <Component class="javax.swing.JRadioButton" name="RadioBoutonGe512">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="bGroupeEl"/>
@@ -248,7 +248,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RadioBoutonGeActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RadioBoutonGe512ActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

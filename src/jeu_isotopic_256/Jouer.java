@@ -86,11 +86,11 @@ public class Jouer {
         grille[0][0]=H;
         grille[1][0]=Sn;
         grille[2][0]=Sn;
-        grille[0][1]=P;
-        grille[1][1]=vide;
+        grille[1][1]=P;
+        grille[2][2]=vide;
         grille[0][2]=P;
-        grille[1][2]=P;
-        grille[2][2]=O;
+        grille[0][1]=P;
+        grille[1][2]=O;
         Score=0;
     }
    

@@ -98,7 +98,7 @@ public class FJouer extends javax.swing.JDialog {
                 pGrille.add(tabLab[i][j]);
             }
         }
-        Partie.debuter(Tgrille);
+        Partie.debuterTest(Tgrille);
         Partie.afficher(tabLab);
     }
 

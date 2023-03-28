@@ -4,6 +4,9 @@
  */
 package jeu_isotopic_256;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author Lubos
@@ -16,10 +19,11 @@ public class FAccueil extends javax.swing.JFrame {
     
     private FChoixJeu fichChoix;
     private FJouer fichJouer;
-    
+
     
     public FAccueil() {
         this.setLocation(470,200);
+        //ici on centre notre fenetre 
         this.setTitle(" Accueil du jeu");
         initComponents();
         fichChoix = new FChoixJeu(this,false);
