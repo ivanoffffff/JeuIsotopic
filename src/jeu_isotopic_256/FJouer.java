@@ -6,6 +6,7 @@ package jeu_isotopic_256;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.KeyListener;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -78,6 +79,7 @@ public class FJouer extends javax.swing.JDialog {
 
     
     public void Init(int Tgrille,String ElmaxNom){
+        this.addKeyListener();
         this.ELmaxNom=ElmaxNom;
         this.Tgrille=Tgrille;
         Partie=new Jouer(Tgrille);
@@ -109,7 +111,7 @@ public class FJouer extends javax.swing.JDialog {
     
     public void deplacement(){
         while(Partie.FinPartie(ELmaxNom)==false){
-            if ()
+            
         }
     }
 

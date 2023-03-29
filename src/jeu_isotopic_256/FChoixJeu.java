@@ -4,6 +4,7 @@
  */
 package jeu_isotopic_256;
 
+import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 
 /**
