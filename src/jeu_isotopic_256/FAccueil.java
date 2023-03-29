@@ -11,7 +11,7 @@ import java.awt.Toolkit;
  *
  * @author Lubos
  */
-public class FAccueil extends javax.swing.JFrame {
+public class FAccueil extends javax.swing.JFrame  {
 
     /**
      * Creates new form Accueil_Jeu_Isotopic_256
@@ -144,4 +144,7 @@ public class FAccueil extends javax.swing.JFrame {
     private javax.swing.JButton bJouer;
     private javax.swing.JLabel jLabelPageAccueil;
     // End of variables declaration//GEN-END:variables
+
+
+    
 }

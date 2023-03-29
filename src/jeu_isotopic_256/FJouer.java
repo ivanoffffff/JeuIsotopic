@@ -125,26 +125,29 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         int keyCode = e.getKeyCode();
         
         // Vérifiez si la touche enfoncée est Z, Q, S ou D
-        if (keyCode == KeyEvent.VK_Z) {
-            System.out.println("ZZZZZZZ");
-            Partie.deplacerH();
-            Partie.afficher(tabLab);
-            
+        // Vérifiez si la touche enfoncée est Z, Q, S ou D
+        switch (keyCode) {
+            case KeyEvent.VK_Z: // Effectuez une action pour la touche Z
+                
+                
+                break;
+            case KeyEvent.VK_Q: // Effectuez une action pour la touche Q
+                
+                
+                break;
+            case KeyEvent.VK_S: // Effectuez une action pour la touche S
+                
+                
+                break;
+            case KeyEvent.VK_D: // Effectuez une action pour la touche D
+                
+                
+                break;
+            default:
+                break;
         }
     }
-    
-    public void keyReleased(KeyEvent e) {
-        // Code à exécuter lorsqu'une touche est relâchée
-    }
-    
-    public void keyTyped(KeyEvent e) {
-        // Code à exécuter lorsqu'une touche est tapée (mais pas encore relâchée)
-    }
-    
 
-   
-    
-    
     /**
      * @param args the command line arguments
      */
@@ -192,4 +195,11 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
     private javax.swing.JPanel pGrille;
     // End of variables declaration//GEN-END:variables
 
+    public void keyReleased(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    public void keyTyped(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

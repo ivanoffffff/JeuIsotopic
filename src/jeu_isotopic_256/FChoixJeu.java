@@ -66,11 +66,6 @@ public class FChoixJeu extends javax.swing.JDialog {
         return Elmax;
     }
 
-    
-    
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -275,8 +270,7 @@ public class FChoixJeu extends javax.swing.JDialog {
             this.setVisible(false);
             f.setVisible(true);
         }
-        //JOptionPane.showMessageDialog(this, "Vous avez choisi une grille "+Tgrille+"x"+Tgrille+" et l'élément "+ElmaxNom+Elmax+" à atteindre ");
-        
+                
     }//GEN-LAST:event_bJouerActionPerformed
 
     private void RadioBoutonN256ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioBoutonN256ActionPerformed
