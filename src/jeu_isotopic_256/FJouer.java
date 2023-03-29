@@ -128,20 +128,36 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         // Vérifiez si la touche enfoncée est Z, Q, S ou D
         switch (keyCode) {
             case KeyEvent.VK_Z: // Effectuez une action pour la touche Z
-                
-                
+                Partie.AplDeplacementFusion("Z");
+                Partie.afficher(tabLab);
                 break;
             case KeyEvent.VK_Q: // Effectuez une action pour la touche Q
-                
-                
+                Partie.AplDeplacementFusion("Q");
+                Partie.afficher(tabLab);
                 break;
             case KeyEvent.VK_S: // Effectuez une action pour la touche S
-                
-                
+                Partie.AplDeplacementFusion("S");
+                Partie.afficher(tabLab);
                 break;
             case KeyEvent.VK_D: // Effectuez une action pour la touche D
-                
-                
+                Partie.AplDeplacementFusion("D");
+                Partie.afficher(tabLab);
+                break;
+            case KeyEvent.VK_DOWN: // Effectuez une action pour la touche flèche du bas
+                Partie.AplDeplacementFusion("S");
+                Partie.afficher(tabLab);
+                break;
+            case KeyEvent.VK_UP: // Effectuez une action pour la touche flèche du haut
+                Partie.AplDeplacementFusion("Z");
+                Partie.afficher(tabLab);
+                break;
+            case KeyEvent.VK_LEFT: // Effectuez une action pour la touche flèche de gauche
+                Partie.AplDeplacementFusion("Q");
+                Partie.afficher(tabLab);
+                break;
+            case KeyEvent.VK_RIGHT: // Effectuez une action pour la touche flèche de droite
+                Partie.AplDeplacementFusion("D");
+                Partie.afficher(tabLab);
                 break;
             default:
                 break;
@@ -196,10 +212,10 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
     // End of variables declaration//GEN-END:variables
 
     public void keyReleased(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        
     }
     
     public void keyTyped(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        
     }
 }
