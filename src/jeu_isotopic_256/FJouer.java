@@ -79,7 +79,7 @@ public class FJouer extends javax.swing.JDialog {
 
     
     public void Init(int Tgrille,String ElmaxNom){
-        this.addKeyListener(); 
+        //this.addKeyListener();
         this.ELmaxNom=ElmaxNom;
         this.Tgrille=Tgrille;
         Partie=new Jouer(Tgrille);
@@ -106,7 +106,7 @@ public class FJouer extends javax.swing.JDialog {
         }
         Partie.debuterTest(Tgrille);
         Partie.afficher(tabLab);
-        deplacement();
+        //deplacement();
     }
     
     public void deplacement(){
