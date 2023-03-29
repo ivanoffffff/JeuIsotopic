@@ -6,6 +6,8 @@ package jeu_isotopic_256;
 
 import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.YES_NO_OPTION;
+import static javax.swing.JOptionPane.YES_OPTION;
 
 /**
  *
@@ -264,11 +266,16 @@ public class FChoixJeu extends javax.swing.JDialog {
             default -> {
             }
         }
-        FJouer f=((FAccueil)getParent()).getFichJouer();
-        f.Init(Tgrille,ElmaxNom);
-        this.setVisible(false);
-        f.setVisible(true);
-        JOptionPane.showMessageDialog(this, "Vous avez choisi une grille "+Tgrille+"x"+Tgrille+" et l'élément "+ElmaxNom+Elmax+" à atteindre ");
+        
+        int retour= JOptionPane.showConfirmDialog(this,"Vous avez choisi une grille "+Tgrille+"x"+Tgrille+" et l'élément "+ElmaxNom+Elmax+" à atteindre ","Confirmation choix",YES_NO_OPTION);
+        
+        if (retour==YES_OPTION){
+            FJouer f=((FAccueil)getParent()).getFichJouer();
+            f.Init(Tgrille,ElmaxNom);
+            this.setVisible(false);
+            f.setVisible(true);
+        }
+        //JOptionPane.showMessageDialog(this, "Vous avez choisi une grille "+Tgrille+"x"+Tgrille+" et l'élément "+ElmaxNom+Elmax+" à atteindre ");
         
     }//GEN-LAST:event_bJouerActionPerformed
 
