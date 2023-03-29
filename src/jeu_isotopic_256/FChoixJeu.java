@@ -54,22 +54,16 @@ public class FChoixJeu extends javax.swing.JDialog {
         if (RadioBoutonSn128.isSelected())
             Elmax=128;
         
-        else if(RadioBouton4x4.isSelected())
+        else if(RadioBoutonN256.isSelected())
             Elmax=256;
         
-        else if(RadioBouton5x5.isSelected())
+        else if(RadioBoutonGe512.isSelected())
             Elmax=512;
 
         return Elmax;
     }
 
-    public int getElmax() {
-        return Elmax;
-    }
-
-    public String getElmaxNom() {
-        return ElmaxNom;
-    }
+    
     
     
     
@@ -270,7 +264,7 @@ public class FChoixJeu extends javax.swing.JDialog {
             }
         }
         FJouer f=((FAccueil)getParent()).getFichJouer();
-        f.Init(Tgrille);
+        f.Init(Tgrille,ElmaxNom);
         this.setVisible(false);
         f.setVisible(true);
         JOptionPane.showMessageDialog(this, "Vous avez choisi une grille "+Tgrille+"x"+Tgrille+" et l'élément "+ElmaxNom+Elmax+" à atteindre ");

@@ -23,6 +23,7 @@ public class FJouer extends javax.swing.JDialog {
     private JLabel[][]tabLab;
     private int Tgrille;
     private Jouer Partie;
+    private String ELmaxNom;
     //private final Icon ClassementElement[]={mm_choixjeu.png}; 
     
     public FJouer(java.awt.Frame parent, boolean modal) {
@@ -76,7 +77,8 @@ public class FJouer extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    public void Init(int Tgrille){
+    public void Init(int Tgrille,String ElmaxNom){
+        this.ELmaxNom=ElmaxNom;
         this.Tgrille=Tgrille;
         Partie=new Jouer(Tgrille);
         this.pGrille.removeAll();
@@ -102,13 +104,12 @@ public class FJouer extends javax.swing.JDialog {
         }
         Partie.debuterTest(Tgrille);
         Partie.afficher(tabLab);
-        FAc
-        System.out.println(getParent().getFichChoix());
+        deplacement();
     }
     
     public void deplacement(){
-        while(Partie.FinPartie(this.getParent().getF.getElmaxNom())==false){
-            
+        while(Partie.FinPartie(ELmaxNom)==false){
+            if ()
         }
     }
 
