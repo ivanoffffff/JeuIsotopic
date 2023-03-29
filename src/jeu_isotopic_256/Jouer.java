@@ -517,10 +517,10 @@ public class Jouer {
     }
     
 
-    public boolean FinPartie(Element max){
+    public boolean FinPartie(String max){
         for (int i=0;i<Tgrille;i++){
             for (int j=0;j<Tgrille;j++){
-                if (grille[i][j].getNomEl().equals(max.getNomEl())){
+                if (grille[i][j].getNomEl().equals(max)){
                     System.out.println("Félicitations, vous avez réussi à atteindre l'élément max !");
                     return true;
                 }

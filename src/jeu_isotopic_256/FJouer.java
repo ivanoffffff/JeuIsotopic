@@ -19,6 +19,7 @@ public class FJouer extends javax.swing.JDialog {
     /**
      * Creates new form FJouer
      */
+    //private FChoixJeu fichChoix;
     private JLabel[][]tabLab;
     private int Tgrille;
     private Jouer Partie;
@@ -101,10 +102,14 @@ public class FJouer extends javax.swing.JDialog {
         }
         Partie.debuterTest(Tgrille);
         Partie.afficher(tabLab);
+        FAc
+        System.out.println(getParent().getFichChoix());
     }
     
     public void deplacement(){
-        while(Partie.FinPartie(this.getParent().getFichChoix().getElmax())==false)
+        while(Partie.FinPartie(this.getParent().getF.getElmaxNom())==false){
+            
+        }
     }
 
    

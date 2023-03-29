@@ -16,7 +16,7 @@ public class FChoixJeu extends javax.swing.JDialog {
      * Creates new form FJouer
      */
     
-    private FJouer fichJouer;
+    //private FJouer fichJouer;
     private int Elmax=256;
     private int Tgrille;
     private String ElmaxNom="N";
@@ -66,6 +66,12 @@ public class FChoixJeu extends javax.swing.JDialog {
     public int getElmax() {
         return Elmax;
     }
+
+    public String getElmaxNom() {
+        return ElmaxNom;
+    }
+    
+    
     
     
 

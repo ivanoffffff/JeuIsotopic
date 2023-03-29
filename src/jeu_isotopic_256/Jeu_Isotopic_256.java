@@ -18,16 +18,17 @@ public class Jeu_Isotopic_256 {
        FAccueil fichAccueil = new FAccueil();
        
        fichAccueil.setVisible(true);
-       
        /*
-        Scanner sc= new Scanner(System.in);
+       
+       Scanner sc= new Scanner(System.in);
        String Taillegrille="0";
        String ElmaxS="";
        String choix="";
        int Elchimiquemax=0;
        boolean init=true,dir=true,deplacementPossible=false;
        String instruction="";
-       Element max=new ElementInstable("Sn",Elchimiquemax,96);
+       String max="Sn";
+       //Element max=new ElementInstable("Sn",Elchimiquemax,96);
        
        System.out.println("Voulez-vous commencer une nouvelle partie(new) ou charger la précédente (charger) ? ");
        while (init){    
@@ -80,7 +81,8 @@ public class Jeu_Isotopic_256 {
                 }
                 case 2 -> {
                     Elchimiquemax = 256;
-                    max=new Element("   N  ",Elchimiquemax);
+                    max="N";
+                    //max=new Element("   N  ",Elchimiquemax);
                 }
             }
              
@@ -93,7 +95,7 @@ public class Jeu_Isotopic_256 {
             Partie.afficher();
             Partie.deplacerB();
             Partie.afficher();
-            //Partie.debuterTest(Tgrille);                
+            //Partie.debuterTest(Tgrille);            
             Partie.debuter(Tgrille);
 
             Partie.afficher();
@@ -138,7 +140,9 @@ public class Jeu_Isotopic_256 {
             PartieCharge.afficher();
             long NumeroElmax= PartieCharge.ChargerPartie();
             if (NumeroElmax==256)
-                max=new Element("   N  ",Elchimiquemax);
+                max="N";
+                //max=new Element("   N  ",Elchimiquemax);
+            
             
             while(PartieCharge.FinPartie(max)==false){
                 deplacementPossible=false;
