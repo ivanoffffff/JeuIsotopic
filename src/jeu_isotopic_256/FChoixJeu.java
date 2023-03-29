@@ -17,9 +17,9 @@ public class FChoixJeu extends javax.swing.JDialog {
      */
     
     private FJouer fichJouer;
-    private int Elmax;
+    private int Elmax=256;
     private int Tgrille;
-    private String ElmaxNom;
+    private String ElmaxNom="N";
     
     public FChoixJeu(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
