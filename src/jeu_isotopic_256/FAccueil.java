@@ -22,10 +22,11 @@ public class FAccueil extends javax.swing.JFrame {
 
     
     public FAccueil() {
-        this.setLocation(470,200);
+        //this.setLocation(470,200);
         //ici on centre notre fenetre 
         this.setTitle(" Accueil du jeu");
         initComponents();
+        setLocationRelativeTo(null);
         fichChoix = new FChoixJeu(this,false);
         fichJouer = new FJouer(this,false);
     }
@@ -33,6 +34,12 @@ public class FAccueil extends javax.swing.JFrame {
     public FJouer getFichJouer() {
         return fichJouer;
     }
+
+    public FChoixJeu getFichChoix() {
+        return fichChoix;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -102,6 +102,10 @@ public class FJouer extends javax.swing.JDialog {
         Partie.debuterTest(Tgrille);
         Partie.afficher(tabLab);
     }
+    
+    public void deplacement(){
+        while(Partie.FinPartie(this.getParent().getFichChoix().getElmax())==false)
+    }
 
    
     

@@ -24,7 +24,7 @@ public class FChoixJeu extends javax.swing.JDialog {
     public FChoixJeu(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocation(470,250);
+        setLocationRelativeTo(null);
         this.setTitle("CHOIX DU JOUEUR");
         jPanelBoutonTgrille.setOpaque(false);
         RadioBouton4x4.setOpaque(false);
@@ -34,7 +34,6 @@ public class FChoixJeu extends javax.swing.JDialog {
         RadioBoutonSn128.setOpaque(false);
         RadioBoutonN256.setOpaque(false);
         RadioBoutonGe512.setOpaque(false);
-        
     }
     
     
@@ -63,6 +62,12 @@ public class FChoixJeu extends javax.swing.JDialog {
 
         return Elmax;
     }
+
+    public int getElmax() {
+        return Elmax;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
