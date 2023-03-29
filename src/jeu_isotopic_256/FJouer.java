@@ -6,6 +6,7 @@ package jeu_isotopic_256;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.Icon;
 import javax.swing.JLabel;
@@ -15,7 +16,7 @@ import javax.swing.JPanel;
  *
  * @author Lubos
  */
-public class FJouer extends javax.swing.JDialog {
+public class FJouer extends javax.swing.JDialog implements KeyListener {
 
     /**
      * Creates new form FJouer
@@ -25,12 +26,17 @@ public class FJouer extends javax.swing.JDialog {
     private int Tgrille;
     private Jouer Partie;
     private String ELmaxNom;
+    
+        
+    
     //private final Icon ClassementElement[]={mm_choixjeu.png}; 
     
-    public FJouer(java.awt.Frame parent, boolean modal) {
+    public FJouer(java.awt.Frame parent, boolean modal)  {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        this.addKeyListener(this);
+        
     }
 
     /**
@@ -79,7 +85,6 @@ public class FJouer extends javax.swing.JDialog {
 
     
     public void Init(int Tgrille,String ElmaxNom){
-        //this.addKeyListener();
         this.ELmaxNom=ElmaxNom;
         this.Tgrille=Tgrille;
         Partie=new Jouer(Tgrille);
@@ -114,6 +119,28 @@ public class FJouer extends javax.swing.JDialog {
             
         }
     }
+    
+    public void keyPressed(KeyEvent e) {
+        // Récupérez la touche qui a été enfoncée
+        int keyCode = e.getKeyCode();
+        
+        // Vérifiez si la touche enfoncée est Z, Q, S ou D
+        if (keyCode == KeyEvent.VK_Z) {
+            System.out.println("ZZZZZZZ");
+            Partie.deplacerH();
+            Partie.afficher(tabLab);
+            
+        }
+    }
+    
+    public void keyReleased(KeyEvent e) {
+        // Code à exécuter lorsqu'une touche est relâchée
+    }
+    
+    public void keyTyped(KeyEvent e) {
+        // Code à exécuter lorsqu'une touche est tapée (mais pas encore relâchée)
+    }
+    
 
    
     
@@ -158,9 +185,11 @@ public class FJouer extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel pGrille;
     // End of variables declaration//GEN-END:variables
+
 }
