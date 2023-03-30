@@ -517,19 +517,19 @@ public class Jouer {
     }
     
 
-    public boolean FinPartie(String max){
+    public String FinPartie(String max){
         for (int i=0;i<Tgrille;i++){
             for (int j=0;j<Tgrille;j++){
                 if (grille[i][j].getNomEl().equals(max)){
                     System.out.println("Félicitations, vous avez réussi à atteindre l'élément max !");
-                    return true;
+                    return "WIN";
                 }
             }
         }
         for (int i=0;i<Tgrille;i++){
             for (int j=0;j<Tgrille;j++){
                 if (grille[i][j].getNomEl().compareTo(vide.getNomEl())==0){
-                    return false;
+                    return "CONTINUE";
                 }
             }
         }
@@ -537,9 +537,9 @@ public class Jouer {
             System.out.println("""
                                Dommage, vous n'avez plus de d\u00e9placement possible !
                                 FIN DU JEU""");
-            return true;
+            return "LOSE";
         }
-        return false;
+        return "CONTINUE";
         
     }
 }

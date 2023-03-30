@@ -10,6 +10,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.Icon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.YES_NO_OPTION;
+import static javax.swing.JOptionPane.YES_OPTION;
 import javax.swing.JPanel;
 
 /**
@@ -116,7 +119,7 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
 
     public void keyPressed(KeyEvent e) {
         // Récupérez la touche qui a été enfoncée
-        if (Partie.FinPartie(ELmaxNom)==false){
+        if (Partie.FinPartie(ELmaxNom).equals("CONTINUE")){
             int keyCode = e.getKeyCode();
 
             // Vérifiez si la touche enfoncée est Z, Q, S ou D
@@ -157,6 +160,24 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
                 default:
                     break;
             }
+            if (Partie.FinPartie(ELmaxNom).equals("WIN")||Partie.FinPartie(ELmaxNom).equals("LOSE")){
+                fin();
+            }
+        }
+    }
+    
+    public void fin(){
+        int newPartie;
+        if (Partie.FinPartie(ELmaxNom).equals("WIN")){
+            newPartie=JOptionPane.showConfirmDialog(this,"Félicitation vous avez réussi à atteintre l'élément "+ELmaxNom+" !! \n\n        Voulez-vous relancer une nouvelle partie?","Félicitation",YES_NO_OPTION);
+        }
+        else{
+            newPartie=JOptionPane.showConfirmDialog(this,"Oups, vous n'avez pas réussi à atteintre l'élément "+ELmaxNom+" !! \n\n        Voulez-vous relancer une nouvelle partie?","Oups",YES_NO_OPTION);
+        }
+        if (newPartie==YES_OPTION){
+            FAccueil fichAccueil = new FAccueil();
+            this.setVisible(false);
+            fichAccueil.setVisible(true);
         }
     }
 
