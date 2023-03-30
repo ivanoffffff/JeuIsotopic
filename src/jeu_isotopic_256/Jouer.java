@@ -40,7 +40,7 @@ public class Jouer {
     Element N=new Element("N",256);
     Element Ge=new Element("Ge",512);
     Element vide =new Element(" ");
-    private final Element ClassementElement[]={H,He,Be,O,P,Ni,Sn,N}; 
+    private final Element ClassementElement[]={H,He,Be,O,P,Ni,Sn,N,Ge}; 
 
     public Jouer(int Tgrille) {
         this.Tgrille=Tgrille;
