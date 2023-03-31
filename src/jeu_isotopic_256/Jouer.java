@@ -453,12 +453,22 @@ public class Jouer {
         Sauv.close();
     }
  
-    public long ChargerPartie() throws FileNotFoundException, IOException{
+    public String ChargerPartie() throws FileNotFoundException, IOException{
         FileReader Sauv=new FileReader(PartieSauv);
         BufferedReader br=new BufferedReader(Sauv);
         String ligne1=br.readLine();
         String[]tab=ligne1.split("/");
         long max=Integer.parseInt(tab[0]);
+        String nomElmax;
+        if (max==128){
+            nomElmax="Sn";
+        }
+        else if (max==256){
+            nomElmax="N";
+        }
+        else{
+            nomElmax="Ge";
+        }
         Tgrille=Integer.parseInt(tab[1]);
         Score=Integer.parseInt(tab[2]);
         grille=new Element[Tgrille][Tgrille];
@@ -471,7 +481,7 @@ public class Jouer {
         Element El=vide;
         while(ligne!=null){
             String[]tabEl=ligne.split("/");
-            if (tabEl[0].equals("         ")){
+            if (tabEl[0].equals(" ")){
                 El=vide;
             }
             else if(tabEl.length==3){
@@ -495,7 +505,7 @@ public class Jouer {
             ligne=br.readLine();
         }
         Sauv.close();
-        return max;
+        return nomElmax;
     }
     
     public boolean deplacementPossible(){
@@ -542,4 +552,10 @@ public class Jouer {
         return "CONTINUE";
         
     }
+
+    public int getTgrille() {
+        return Tgrille;
+    }
+    
+    
 }

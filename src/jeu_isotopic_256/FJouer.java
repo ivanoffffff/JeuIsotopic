@@ -8,9 +8,11 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.NO_OPTION;
 import static javax.swing.JOptionPane.YES_NO_OPTION;
 import static javax.swing.JOptionPane.YES_OPTION;
 import javax.swing.JPanel;
@@ -28,8 +30,7 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
     private JLabel[][]tabLab;
     private int Tgrille;
     private Jouer Partie;
-    private String ELmaxNom;
-    
+    private String ELmaxNom;    
         
     
     //private final Icon ClassementElement[]={mm_choixjeu.png}; 
@@ -86,11 +87,17 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void Init() throws IOException{
+        Partie=new Jouer();
+        ELmaxNom=Partie.ChargerPartie();
+        Tgrille=Partie.getTgrille();
+        creation();
+        Partie.debuter();
+        System.out.println(tabLab[0][0]);
+        Partie.afficher(tabLab);
+    }
     
-    public void Init(int Tgrille,String ElmaxNom){
-        this.ELmaxNom=ElmaxNom;
-        this.Tgrille=Tgrille;
-        Partie=new Jouer(Tgrille);
+    public void creation(){
         this.pGrille.removeAll();
         //créer le tableau de labels
         tabLab = new JLabel[Tgrille][Tgrille];
@@ -112,6 +119,34 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
                 pGrille.add(tabLab[i][j]);
             }
         }
+    }
+    
+    public void Init(int Tgrille,String ElmaxNom){
+        this.ELmaxNom=ElmaxNom;
+        this.Tgrille=Tgrille;
+        Partie=new Jouer(Tgrille);
+        creation();
+        /*this.pGrille.removeAll();
+        //créer le tableau de labels
+        tabLab = new JLabel[Tgrille][Tgrille];
+        //créer un gestionnaire de positionnement et l’associer au panel
+        GridLayout gest = new GridLayout(0,Tgrille);
+        pGrille.setLayout(gest);
+        //créer les labels
+        for (int i=0;i<Tgrille;i++){
+            for (int j=0; j<Tgrille;j++){
+                    
+                // créer un label
+                JLabel lab= new JLabel ();
+                // définir la taille du label
+                Dimension dim = new Dimension(150,150);
+                lab.setPreferredSize(dim);
+                // ajouter le label dans le tableau
+                tabLab[i][j]=lab;
+                // ajouter le label dans le panel
+                pGrille.add(tabLab[i][j]);
+            }
+        }*/
         Partie.debuterTest(Tgrille);
         Partie.afficher(tabLab);
     }
@@ -178,6 +213,9 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
             FAccueil fichAccueil = new FAccueil();
             this.setVisible(false);
             fichAccueil.setVisible(true);
+        }
+        else if (newPartie==NO_OPTION){
+            System.exit(0);
         }
     }
 

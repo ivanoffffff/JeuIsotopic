@@ -16,7 +16,6 @@ public class Jeu_Isotopic_256 {
     public static void main(String[] args) throws ErreurInstruction, IOException, InterruptedException {
         
        FAccueil fichAccueil = new FAccueil();
-       
        fichAccueil.setVisible(true);
        /*
        
@@ -99,7 +98,7 @@ public class Jeu_Isotopic_256 {
             Partie.debuter(Tgrille);
 
             Partie.afficher();
-            while(Partie.FinPartie(max)==false){
+            while(Partie.FinPartie(max).equals("CONTINUE")){
                 System.out.println("Choix de l'instruction, (Z) Haut, (S) Bas, (D) Droite, (Q) Gauche, (P) Sauvegarder : ");
                 while (dir){    
                     try{
@@ -138,13 +137,13 @@ public class Jeu_Isotopic_256 {
             Jouer PartieCharge=new Jouer();
             PartieCharge.debuter();
             PartieCharge.afficher();
-            long NumeroElmax= PartieCharge.ChargerPartie();
-            if (NumeroElmax==256)
-                max="N";
+            max= PartieCharge.ChargerPartie();
+            //if (NumeroElmax==256)
+            //    max="N";
                 //max=new Element("   N  ",Elchimiquemax);
             
             
-            while(PartieCharge.FinPartie(max)==false){
+            while(PartieCharge.FinPartie(max).equals("CONTINUE")){
                 deplacementPossible=false;
                 System.out.println("Choix de l'instruction, (Z) Haut, (S) Bas, (D) Droite, (Q) Gauche, (P) Sauvegarder : ");
                 while (dir){

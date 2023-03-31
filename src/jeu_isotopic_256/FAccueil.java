@@ -6,6 +6,10 @@ package jeu_isotopic_256;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
  *
@@ -96,6 +100,13 @@ public class FAccueil extends javax.swing.JFrame  {
 
     private void bChargerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bChargerActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        try {
+            fichJouer.Init();
+        } catch (IOException ex) {
+            Logger.getLogger(FAccueil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        fichJouer.setVisible(true);
     }//GEN-LAST:event_bChargerActionPerformed
 
     private void bJouerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bJouerActionPerformed
