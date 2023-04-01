@@ -4,9 +4,7 @@
  */
 package Fiches;
 
-import Fiches.FAccueil;
 import javax.swing.JOptionPane;
-import Fiches.FJouer;
 import static javax.swing.JOptionPane.YES_NO_OPTION;
 import static javax.swing.JOptionPane.YES_OPTION;
 
@@ -94,14 +92,17 @@ public class FChoixJeu extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bRetour.setFont(new java.awt.Font("Segoe UI Variable", 2, 12)); // NOI18N
+        bRetour.setBackground(new java.awt.Color(255, 0, 255));
+        bRetour.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        bRetour.setForeground(new java.awt.Color(255, 255, 255));
         bRetour.setText("Retour");
+        bRetour.setFocusable(false);
         bRetour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bRetourActionPerformed(evt);
             }
         });
-        getContentPane().add(bRetour, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 470, -1, -1));
+        getContentPane().add(bRetour, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, 100, 40));
 
         jPanelBoutonTgrille.setForeground(java.awt.SystemColor.menu);
 
@@ -109,6 +110,7 @@ public class FChoixJeu extends javax.swing.JDialog {
         RadioBouton4x4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 30)); // NOI18N
         RadioBouton4x4.setText("4x4");
         RadioBouton4x4.setBorder(null);
+        RadioBouton4x4.setFocusable(false);
         RadioBouton4x4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RadioBouton4x4ActionPerformed(evt);
@@ -120,6 +122,7 @@ public class FChoixJeu extends javax.swing.JDialog {
         RadioBouton3x3.setSelected(true);
         RadioBouton3x3.setText("3x3");
         RadioBouton3x3.setBorder(null);
+        RadioBouton3x3.setFocusable(false);
         RadioBouton3x3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RadioBouton3x3ActionPerformed(evt);
@@ -130,6 +133,7 @@ public class FChoixJeu extends javax.swing.JDialog {
         RadioBouton5x5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 30)); // NOI18N
         RadioBouton5x5.setText("5x5");
         RadioBouton5x5.setBorder(null);
+        RadioBouton5x5.setFocusable(false);
         RadioBouton5x5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RadioBouton5x5ActionPerformed(evt);
@@ -162,13 +166,17 @@ public class FChoixJeu extends javax.swing.JDialog {
 
         getContentPane().add(jPanelBoutonTgrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 290, 80));
 
+        bJouer.setBackground(new java.awt.Color(102, 102, 255));
+        bJouer.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        bJouer.setForeground(new java.awt.Color(255, 255, 255));
         bJouer.setText("Lancer partie");
+        bJouer.setFocusable(false);
         bJouer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bJouerActionPerformed(evt);
             }
         });
-        getContentPane().add(bJouer, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, -1, -1));
+        getContentPane().add(bJouer, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 460, -1, 40));
 
         jPanelBoutonElmax.setForeground(java.awt.SystemColor.menu);
 
@@ -177,6 +185,7 @@ public class FChoixJeu extends javax.swing.JDialog {
         RadioBoutonN256.setSelected(true);
         RadioBoutonN256.setText("N 256");
         RadioBoutonN256.setBorder(null);
+        RadioBoutonN256.setFocusable(false);
         RadioBoutonN256.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RadioBoutonN256ActionPerformed(evt);
@@ -187,6 +196,7 @@ public class FChoixJeu extends javax.swing.JDialog {
         RadioBoutonSn128.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 30)); // NOI18N
         RadioBoutonSn128.setText("Sn 128");
         RadioBoutonSn128.setBorder(null);
+        RadioBoutonSn128.setFocusable(false);
         RadioBoutonSn128.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RadioBoutonSn128ActionPerformed(evt);
@@ -197,6 +207,7 @@ public class FChoixJeu extends javax.swing.JDialog {
         RadioBoutonGe512.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 30)); // NOI18N
         RadioBoutonGe512.setText("Ge 512");
         RadioBoutonGe512.setBorder(null);
+        RadioBoutonGe512.setFocusable(false);
         RadioBoutonGe512.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RadioBoutonGe512ActionPerformed(evt);
@@ -266,8 +277,10 @@ public class FChoixJeu extends javax.swing.JDialog {
         
         if (retour==YES_OPTION){
             FJouer f=((FAccueil)getParent()).getFichJouer();
+            FActions fAct=((FAccueil)getParent()).getFichActions();
             f.Init(Tgrille,ElmaxNom);
             this.setVisible(false);
+            fAct.setVisible(true);
             f.setVisible(true);
         }
                 

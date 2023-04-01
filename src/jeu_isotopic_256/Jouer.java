@@ -440,7 +440,7 @@ public class Jouer {
         return true;
     }
 
-    public void SavePartie(long max) throws IOException{
+    public void SavePartie(String max) throws IOException{
         
         FileWriter Sauv=new FileWriter(PartieSauv);
         Sauv.write(max+"/"+Tgrille+"/"+Score);
@@ -458,16 +458,18 @@ public class Jouer {
         BufferedReader br=new BufferedReader(Sauv);
         String ligne1=br.readLine();
         String[]tab=ligne1.split("/");
-        long max=Integer.parseInt(tab[0]);
-        String nomElmax;
-        if (max==128){
-            nomElmax="Sn";
-        }
-        else if (max==256){
-            nomElmax="N";
-        }
-        else{
-            nomElmax="Ge";
+        String nomElmax=tab[0];
+        int Elmax;
+        switch (nomElmax) {
+            case "Sn":
+                Elmax=128;
+                break;
+            case "N":
+                Elmax=256;
+                break;
+            default:
+                Elmax=512;
+                break;
         }
         Tgrille=Integer.parseInt(tab[1]);
         Score=Integer.parseInt(tab[2]);

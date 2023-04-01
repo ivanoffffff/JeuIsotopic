@@ -6,18 +6,19 @@ package Fiches;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Fiches.FChoixJeu;
-import Fiches.FJouer;
+
 
 
 /**
  *
  * @author Lubos
  */
-public class FAccueil extends javax.swing.JFrame  {
+public class FAccueil extends javax.swing.JFrame implements KeyListener {
 
     /**
      * Creates new form Accueil_Jeu_Isotopic_256
@@ -25,6 +26,7 @@ public class FAccueil extends javax.swing.JFrame  {
     
     private FChoixJeu fichChoix;
     private FJouer fichJouer;
+    private FActions fichActions;
 
     
     public FAccueil() {
@@ -35,6 +37,7 @@ public class FAccueil extends javax.swing.JFrame  {
         setLocationRelativeTo(null);
         fichChoix = new FChoixJeu(this,false);
         fichJouer = new FJouer(this,false);
+        fichActions = new FActions(this,false);
     }
 
     public FJouer getFichJouer() {
@@ -44,6 +47,12 @@ public class FAccueil extends javax.swing.JFrame  {
     public FChoixJeu getFichChoix() {
         return fichChoix;
     }
+
+    public FActions getFichActions() {
+        return fichActions;
+    }
+    
+    
     
     
 
@@ -68,6 +77,7 @@ public class FAccueil extends javax.swing.JFrame  {
         bCharger.setForeground(new java.awt.Color(255, 255, 255));
         bCharger.setText("Charger partie");
         bCharger.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        bCharger.setFocusable(false);
         bCharger.setMaximumSize(new java.awt.Dimension(130, 25));
         bCharger.setMinimumSize(new java.awt.Dimension(130, 25));
         bCharger.setPreferredSize(new java.awt.Dimension(130, 25));
@@ -83,6 +93,7 @@ public class FAccueil extends javax.swing.JFrame  {
         bJouer.setForeground(new java.awt.Color(255, 255, 255));
         bJouer.setText("Nouvelle partie");
         bJouer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        bJouer.setFocusable(false);
         bJouer.setMaximumSize(new java.awt.Dimension(130, 25));
         bJouer.setMinimumSize(new java.awt.Dimension(130, 25));
         bJouer.setPreferredSize(new java.awt.Dimension(130, 25));
@@ -108,6 +119,7 @@ public class FAccueil extends javax.swing.JFrame  {
         } catch (IOException ex) {
             Logger.getLogger(FAccueil.class.getName()).log(Level.SEVERE, null, ex);
         }
+        fichActions.setVisible(true);
         fichJouer.setVisible(true);
     }//GEN-LAST:event_bChargerActionPerformed
 
@@ -157,6 +169,18 @@ public class FAccueil extends javax.swing.JFrame  {
     private javax.swing.JButton bJouer;
     private javax.swing.JLabel jLabelPageAccueil;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
 
 
     

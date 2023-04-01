@@ -8,11 +8,20 @@ package Fiches;
  *
  * @author Lubos
  */
+
+
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import jeu_isotopic_256.Jouer;
+
 public class FActions extends javax.swing.JDialog {
 
     /**
      * Creates new form FActions
      */
+    
+    
     public FActions(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -40,6 +49,11 @@ public class FActions extends javax.swing.JDialog {
         bSauv.setForeground(new java.awt.Color(255, 255, 255));
         bSauv.setText("Sauvegarder");
         bSauv.setFocusable(false);
+        bSauv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSauvActionPerformed(evt);
+            }
+        });
         getContentPane().add(bSauv, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, -1));
 
         bQuitter.setBackground(new java.awt.Color(255, 0, 255));
@@ -67,6 +81,19 @@ public class FActions extends javax.swing.JDialog {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_bQuitterActionPerformed
+
+    private void bSauvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSauvActionPerformed
+       
+            // TODO add your handling code here:
+           FJouer f=((FAccueil)getParent()).getFichJouer();
+        try {
+            f.getPartie().SavePartie(f.getELmaxNom());
+        } catch (IOException ex) {
+            Logger.getLogger(FActions.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.exit(0);
+        
+    }//GEN-LAST:event_bSauvActionPerformed
 
     /**
      * @param args the command line arguments

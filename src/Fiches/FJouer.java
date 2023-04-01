@@ -4,7 +4,6 @@
  */
 package Fiches;
 
-import Fiches.FAccueil;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
@@ -25,6 +24,7 @@ import jeu_isotopic_256.Jouer;
  */
 public class FJouer extends javax.swing.JDialog implements KeyListener {
 
+    
     /**
      * Creates new form FJouer
      */
@@ -45,6 +45,16 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         
     }
 
+    public Jouer getPartie() {
+        return Partie;
+    }
+
+    public String getELmaxNom() {
+        return ELmaxNom;
+    }
+    
+   
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,6 +69,7 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         pGrille.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pGrille.setFocusable(false);
 
         javax.swing.GroupLayout pGrilleLayout = new javax.swing.GroupLayout(pGrille);
         pGrille.setLayout(pGrilleLayout);
@@ -156,12 +167,12 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
     }
     
 
+    @Override
     public void keyPressed(KeyEvent e) {
         // Récupérez la touche qui a été enfoncée
         if (Partie.FinPartie(ELmaxNom).equals("CONTINUE")){
             int keyCode = e.getKeyCode();
 
-            // Vérifiez si la touche enfoncée est Z, Q, S ou D
             // Vérifiez si la touche enfoncée est Z, Q, S ou D
             switch (keyCode) {
                 case KeyEvent.VK_Z: // Effectuez une action pour la touche Z
