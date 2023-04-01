@@ -1,6 +1,7 @@
 
 package jeu_isotopic_256;
 
+import Fiches.FAccueil;
 import java.io.IOException;
 import java.util.Scanner;
 

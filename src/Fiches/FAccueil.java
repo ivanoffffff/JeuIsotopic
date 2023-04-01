@@ -4,11 +4,14 @@
  */
 package Fiches;
 
-import pfiches.FActions;
-import Fiches.FJouer;
-import Fiches.FChoixJeu;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import Fiches.FChoixJeu;
+import Fiches.FJouer;
+
 
 /**
  *
@@ -22,7 +25,6 @@ public class FAccueil extends javax.swing.JFrame  {
     
     private FChoixJeu fichChoix;
     private FJouer fichJouer;
-    private FActions fichActions;
 
     
     public FAccueil() {
@@ -42,12 +44,6 @@ public class FAccueil extends javax.swing.JFrame  {
     public FChoixJeu getFichChoix() {
         return fichChoix;
     }
-
-    public FActions getFichActions() {
-        return fichActions;
-    }
-    
-    
     
     
 
@@ -106,6 +102,13 @@ public class FAccueil extends javax.swing.JFrame  {
 
     private void bChargerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bChargerActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        try {
+            fichJouer.Init();
+        } catch (IOException ex) {
+            Logger.getLogger(FAccueil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        fichJouer.setVisible(true);
     }//GEN-LAST:event_bChargerActionPerformed
 
     private void bJouerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bJouerActionPerformed

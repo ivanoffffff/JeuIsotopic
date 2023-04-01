@@ -2,15 +2,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package jeu_isotopic_256;
+package Fiches;
 
+import Fiches.FAccueil;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 import javax.swing.Icon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.NO_OPTION;
+import static javax.swing.JOptionPane.YES_NO_OPTION;
+import static javax.swing.JOptionPane.YES_OPTION;
 import javax.swing.JPanel;
+import jeu_isotopic_256.Jouer;
 
 /**
  *
@@ -25,8 +32,7 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
     private JLabel[][]tabLab;
     private int Tgrille;
     private Jouer Partie;
-    private String ELmaxNom;
-    
+    private String ELmaxNom;    
         
     
     //private final Icon ClassementElement[]={mm_choixjeu.png}; 
@@ -52,15 +58,17 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        pGrille.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         javax.swing.GroupLayout pGrilleLayout = new javax.swing.GroupLayout(pGrille);
         pGrille.setLayout(pGrilleLayout);
         pGrilleLayout.setHorizontalGroup(
             pGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+            .addGap(0, 446, Short.MAX_VALUE)
         );
         pGrilleLayout.setVerticalGroup(
             pGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 496, Short.MAX_VALUE)
+            .addGap(0, 494, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -70,24 +78,30 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
             .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(pGrille, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(19, 19, 19)
                 .addComponent(pGrille, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(24, 24, 24))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void Init() throws IOException{
+        Partie=new Jouer();
+        ELmaxNom=Partie.ChargerPartie();
+        Tgrille=Partie.getTgrille();
+        creation();
+        Partie.debuter();
+        System.out.println(tabLab[0][0]);
+        Partie.afficher(tabLab);
+    }
     
-    public void Init(int Tgrille,String ElmaxNom){
-        this.ELmaxNom=ElmaxNom;
-        this.Tgrille=Tgrille;
-        Partie=new Jouer(Tgrille);
+    public void creation(){
         this.pGrille.removeAll();
         //créer le tableau de labels
         tabLab = new JLabel[Tgrille][Tgrille];
@@ -109,6 +123,34 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
                 pGrille.add(tabLab[i][j]);
             }
         }
+    }
+    
+    public void Init(int Tgrille,String ElmaxNom){
+        this.ELmaxNom=ElmaxNom;
+        this.Tgrille=Tgrille;
+        Partie=new Jouer(Tgrille);
+        creation();
+        /*this.pGrille.removeAll();
+        //créer le tableau de labels
+        tabLab = new JLabel[Tgrille][Tgrille];
+        //créer un gestionnaire de positionnement et l’associer au panel
+        GridLayout gest = new GridLayout(0,Tgrille);
+        pGrille.setLayout(gest);
+        //créer les labels
+        for (int i=0;i<Tgrille;i++){
+            for (int j=0; j<Tgrille;j++){
+                    
+                // créer un label
+                JLabel lab= new JLabel ();
+                // définir la taille du label
+                Dimension dim = new Dimension(150,150);
+                lab.setPreferredSize(dim);
+                // ajouter le label dans le tableau
+                tabLab[i][j]=lab;
+                // ajouter le label dans le panel
+                pGrille.add(tabLab[i][j]);
+            }
+        }*/
         Partie.debuterTest(Tgrille);
         Partie.afficher(tabLab);
     }
@@ -116,9 +158,10 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
 
     public void keyPressed(KeyEvent e) {
         // Récupérez la touche qui a été enfoncée
-        if (Partie.FinPartie(ELmaxNom)==false){
+        if (Partie.FinPartie(ELmaxNom).equals("CONTINUE")){
             int keyCode = e.getKeyCode();
 
+            // Vérifiez si la touche enfoncée est Z, Q, S ou D
             // Vérifiez si la touche enfoncée est Z, Q, S ou D
             switch (keyCode) {
                 case KeyEvent.VK_Z: // Effectuez une action pour la touche Z
@@ -156,6 +199,27 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
                 default:
                     break;
             }
+            if (Partie.FinPartie(ELmaxNom).equals("WIN")||Partie.FinPartie(ELmaxNom).equals("LOSE")){
+                fin();
+            }
+        }
+    }
+    
+    public void fin(){
+        int newPartie;
+        if (Partie.FinPartie(ELmaxNom).equals("WIN")){
+            newPartie=JOptionPane.showConfirmDialog(this,"Félicitation vous avez réussi à atteintre l'élément "+ELmaxNom+" !! \n\n        Voulez-vous relancer une nouvelle partie?","Félicitation",YES_NO_OPTION);
+        }
+        else{
+            newPartie=JOptionPane.showConfirmDialog(this,"Oups, vous n'avez pas réussi à atteintre l'élément "+ELmaxNom+" !! \n\n        Voulez-vous relancer une nouvelle partie?","Oups",YES_NO_OPTION);
+        }
+        if (newPartie==YES_OPTION){
+            FAccueil fichAccueil = new FAccueil();
+            this.setVisible(false);
+            fichAccueil.setVisible(true);
+        }
+        else if (newPartie==NO_OPTION){
+            System.exit(0);
         }
     }
 
