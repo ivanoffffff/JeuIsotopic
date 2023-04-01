@@ -26,6 +26,7 @@ public class FChoixJeu extends javax.swing.JDialog {
     public FChoixJeu(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        //setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE );
         setLocationRelativeTo(null);
         this.setTitle("CHOIX DU JOUEUR");
         jPanelBoutonTgrille.setOpaque(false);
