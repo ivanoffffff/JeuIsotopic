@@ -90,7 +90,7 @@ public class FActions extends javax.swing.JDialog {
         jLabelFondActions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Fond_FActions.gif"))); // NOI18N
         getContentPane().add(jLabelFondActions, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 300));
 
-        jSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fiches/Fond_Sauvegarde.gif"))); // NOI18N
+        jSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Fond_Sauvegarde.gif"))); // NOI18N
         getContentPane().add(jSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 300));
 
         JSaveDone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Fond_Save_Done (2).gif"))); // NOI18N

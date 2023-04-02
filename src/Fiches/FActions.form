@@ -113,7 +113,7 @@
     <Component class="javax.swing.JLabel" name="jSave">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Fiches/Fond_Sauvegarde.gif"/>
+          <Image iconType="3" name="/Images/Fond_Sauvegarde.gif"/>
         </Property>
       </Properties>
       <Constraints>
