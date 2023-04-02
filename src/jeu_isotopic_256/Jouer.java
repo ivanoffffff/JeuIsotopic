@@ -326,7 +326,7 @@ public class Jouer {
         return Score;
     }
 
-    public boolean AplDeplacementFusion(String direction){
+    public boolean AplDeplacementFusion(String direction){ //Inutile maintenant qu'on utilise le Keylistener
         boolean deplacement=true;
         boolean fusion=true;
         int nbChangements=0;
@@ -468,8 +468,11 @@ public class Jouer {
             case "N":
                 Elmax=256;
                 break;
-            default:
+            case "Ge":
                 Elmax=512;
+                break;
+            default:
+                Elmax=1024;
                 break;
         }
         Tgrille=Integer.parseInt(tab[1]);
