@@ -39,8 +39,9 @@ public class Jouer {
     Element Sn=new ElementInstable("Sn",128,96);
     Element N=new Element("N",256);
     Element Ge=new Element("Ge",512);
+    Element Og=new Element("Og",1024);
     Element vide =new Element(" ");
-    private final Element ClassementElement[]={H,He,Be,O,P,Ni,Sn,N,Ge}; 
+    private final Element ClassementElement[]={H,He,Be,O,P,Ni,Sn,N,Ge,Og}; 
 
     public Jouer(int Tgrille) {
         this.Tgrille=Tgrille;
@@ -83,13 +84,13 @@ public class Jouer {
     }
     
     public void debuterTest(int Tgrille){
-        grille[0][0]=H;
+        grille[0][0]=N;
         grille[1][0]=Sn;
         grille[2][0]=Sn;
         grille[1][1]=P;
         grille[2][2]=vide;
         grille[0][2]=P;
-        grille[0][1]=P;
+        grille[0][1]=Ge;
         grille[1][2]=O;
         Score=0;
     }

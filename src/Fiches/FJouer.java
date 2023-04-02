@@ -71,6 +71,7 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
 
         pGrille.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pGrille.setFocusable(false);
+        pGrille.setOpaque(false);
 
         javax.swing.GroupLayout pGrilleLayout = new javax.swing.GroupLayout(pGrille);
         pGrille.setLayout(pGrilleLayout);
@@ -212,6 +213,8 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
                     break;
             }
             if (Partie.FinPartie(ELmaxNom).equals("WIN")||Partie.FinPartie(ELmaxNom).equals("LOSE")){
+                FAccueil dad=((FAccueil)getParent()).getFichAccueil();
+                dad.getFichActions().setVisible(false);
                 fin();
             }
         }
