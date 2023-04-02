@@ -44,6 +44,8 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setLocationRelativeTo(null);
         this.addKeyListener(this);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
     }
 
     public Jouer getPartie() {
@@ -66,8 +68,12 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
     private void initComponents() {
 
         pGrille = new javax.swing.JPanel();
+        jScore = new javax.swing.JLabel();
+        jElmax = new javax.swing.JLabel();
+        JFJouer = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pGrille.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pGrille.setFocusable(false);
@@ -77,29 +83,29 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         pGrille.setLayout(pGrilleLayout);
         pGrilleLayout.setHorizontalGroup(
             pGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 444, Short.MAX_VALUE)
+            .addGap(0, 436, Short.MAX_VALUE)
         );
         pGrilleLayout.setVerticalGroup(
             pGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 494, Short.MAX_VALUE)
+            .addGap(0, 436, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(pGrille, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(pGrille, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(33, Short.MAX_VALUE))
-        );
+        getContentPane().add(pGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 440, 440));
+
+        jScore.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jScore.setForeground(new java.awt.Color(204, 255, 255));
+        jScore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jScore.setText("0");
+        getContentPane().add(jScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 23, 120, 20));
+
+        jElmax.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jElmax.setForeground(new java.awt.Color(204, 255, 255));
+        jElmax.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jElmax.setText("Og");
+        getContentPane().add(jElmax, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 130, 20));
+
+        JFJouer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Fond_FJouer (2).gif"))); // NOI18N
+        getContentPane().add(JFJouer, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -112,6 +118,8 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         Partie.debuter();
         System.out.println(tabLab[0][0]);
         Partie.afficher(tabLab);
+        jScore.setText(Long.toString(Partie.getScore()));
+        jElmax.setText(ELmaxNom);
     }
     
     public void creation(){
@@ -166,6 +174,8 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         }*/
         Partie.debuterTest(Tgrille);
         Partie.afficher(tabLab);
+        jScore.setText(Long.toString(Partie.getScore()));
+        jElmax.setText(ELmaxNom);
     }
 
     
@@ -212,6 +222,8 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
                 default:
                     break;
             }
+            jElmax.setText(ELmaxNom);
+            jScore.setText(Long.toString(Partie.getScore()));
             if (Partie.FinPartie(ELmaxNom).equals("WIN")||Partie.FinPartie(ELmaxNom).equals("LOSE")){
                 FAccueil dad=((FAccueil)getParent()).getFichAccueil();
                 dad.getFichActions().setVisible(false);
@@ -284,6 +296,9 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JFJouer;
+    private javax.swing.JLabel jElmax;
+    private javax.swing.JLabel jScore;
     private javax.swing.JPanel pGrille;
     // End of variables declaration//GEN-END:variables
 
