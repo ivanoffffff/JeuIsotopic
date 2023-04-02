@@ -75,7 +75,6 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pGrille.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pGrille.setFocusable(false);
         pGrille.setOpaque(false);
 
@@ -83,11 +82,11 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         pGrille.setLayout(pGrilleLayout);
         pGrilleLayout.setHorizontalGroup(
             pGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 436, Short.MAX_VALUE)
+            .addGap(0, 440, Short.MAX_VALUE)
         );
         pGrilleLayout.setVerticalGroup(
             pGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 436, Short.MAX_VALUE)
+            .addGap(0, 440, Short.MAX_VALUE)
         );
 
         getContentPane().add(pGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 440, 440));
@@ -116,7 +115,6 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         Tgrille=Partie.getTgrille();
         creation();
         Partie.debuter();
-        System.out.println(tabLab[0][0]);
         Partie.afficher(tabLab);
         jScore.setText(Long.toString(Partie.getScore()));
         jElmax.setText(ELmaxNom);
@@ -151,27 +149,6 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         this.Tgrille=Tgrille;
         Partie=new Jouer(Tgrille);
         creation();
-        /*this.pGrille.removeAll();
-        //créer le tableau de labels
-        tabLab = new JLabel[Tgrille][Tgrille];
-        //créer un gestionnaire de positionnement et l’associer au panel
-        GridLayout gest = new GridLayout(0,Tgrille);
-        pGrille.setLayout(gest);
-        //créer les labels
-        for (int i=0;i<Tgrille;i++){
-            for (int j=0; j<Tgrille;j++){
-                    
-                // créer un label
-                JLabel lab= new JLabel ();
-                // définir la taille du label
-                Dimension dim = new Dimension(150,150);
-                lab.setPreferredSize(dim);
-                // ajouter le label dans le tableau
-                tabLab[i][j]=lab;
-                // ajouter le label dans le panel
-                pGrille.add(tabLab[i][j]);
-            }
-        }*/
         Partie.debuterTest(Tgrille);
         Partie.afficher(tabLab);
         jScore.setText(Long.toString(Partie.getScore()));

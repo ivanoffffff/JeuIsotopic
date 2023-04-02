@@ -16,6 +16,7 @@ public class Element {
     
     private String NomEl;
     private long NumeroEl;
+    private String image;
     //private int TempsVie;
 
     public Element(String NomEl, long NumeroEl) {
@@ -32,6 +33,26 @@ public class Element {
             return NomEl;}
         else 
             return NomEl + NumeroEl ;
+    }
+    
+    public String affich(){
+        if (NomEl.equals(" ")==true)
+            return "/Images/El_Vide.png";
+        else if (NomEl.equals("H")==true){
+            return "/Images/H2_rond (2).png";}
+        else if (NomEl.equals("He")==true)
+            return "/Images/El_He4 (2).png";
+        else if (NomEl.equals("O")==true)
+            return "/Images/El_O16.png";
+        else if (NomEl.equals("Ni")==true)
+            return "/Images/El_Ni64.png";
+        else if (NomEl.equals("N")==true)
+            return "/Images/El_N256.png";
+        else if (NomEl.equals("Ge")==true)
+            return "/Images/El_Ge512.png";
+        else if (NomEl.equals("Og")==true)
+            return "/Images/El_Og1024.png";
+        else return "";
     }
 
     public String getNomEl() {

@@ -14,8 +14,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import javax.swing.Icon;
 import javax.swing.JLabel;
-
 /*
  Andre Léonard
  Bosq Lucas
@@ -84,11 +84,11 @@ public class Jouer {
     }
     
     public void debuterTest(int Tgrille){
-        grille[0][0]=N;
-        grille[1][0]=Sn;
+        grille[0][0]=H;
+        grille[1][0]=He;
         grille[2][0]=Sn;
         grille[1][1]=P;
-        grille[2][2]=vide;
+        grille[2][2]=Be;
         grille[0][2]=P;
         grille[0][1]=Ge;
         grille[1][2]=O;
@@ -110,7 +110,11 @@ public class Jouer {
      public void afficher(JLabel [][]tablab){
         for (int i=0;i<tablab.length;i++){
             for (int k=0;k<tablab[i].length;k++){
-                tablab[i][k].setText(grille[i][k].toString());  //.setIcon() après
+                tablab[i][k].setIcon(null);
+                tablab[i][k].setText(null);
+                tablab[i][k].setIcon(new javax.swing.ImageIcon(getClass().getResource((grille[i][k].affich()))));
+                if (grille[i][k].getNumeroEl()==8||grille[i][k].getNumeroEl()==32||grille[i][k].getNumeroEl()==128)
+                    tablab[i][k].setText(String.valueOf(grille[i][k].getTempsVie()));
             }
         }
     }
@@ -537,7 +541,6 @@ public class Jouer {
         for (int i=0;i<Tgrille;i++){
             for (int j=0;j<Tgrille;j++){
                 if (grille[i][j].getNomEl().equals(max)){
-                    System.out.println("Félicitations, vous avez réussi à atteindre l'élément max !");
                     return "WIN";
                 }
             }
@@ -550,9 +553,6 @@ public class Jouer {
             }
         }
         if (deplacementPossible()==false){
-            System.out.println("""
-                               Dommage, vous n'avez plus de d\u00e9placement possible !
-                                FIN DU JEU""");
             return "LOSE";
         }
         return "CONTINUE";
