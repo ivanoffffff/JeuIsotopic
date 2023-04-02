@@ -5,6 +5,7 @@
 package Fiches;
 
 import java.awt.Dimension;
+import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -28,7 +29,7 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
     /**
      * Creates new form FJouer
      */
-    //private FChoixJeu fichChoix;
+    private Frame parent;
     private JLabel[][]tabLab;
     private int Tgrille;
     private Jouer Partie;
@@ -40,9 +41,9 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
     public FJouer(java.awt.Frame parent, boolean modal)  {
         super(parent, modal);
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setLocationRelativeTo(null);
         this.addKeyListener(this);
-        
     }
 
     public Jouer getPartie() {
@@ -75,7 +76,7 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         pGrille.setLayout(pGrilleLayout);
         pGrilleLayout.setHorizontalGroup(
             pGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 446, Short.MAX_VALUE)
+            .addGap(0, 444, Short.MAX_VALUE)
         );
         pGrilleLayout.setVerticalGroup(
             pGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,7 +90,7 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
             .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(pGrille, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,8 +166,8 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         Partie.debuterTest(Tgrille);
         Partie.afficher(tabLab);
     }
-    
 
+    
     @Override
     public void keyPressed(KeyEvent e) {
         // Récupérez la touche qui a été enfoncée
@@ -225,6 +226,8 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
             newPartie=JOptionPane.showConfirmDialog(this,"Oups, vous n'avez pas réussi à atteintre l'élément "+ELmaxNom+" !! \n\n        Voulez-vous relancer une nouvelle partie?","Oups",YES_NO_OPTION);
         }
         if (newPartie==YES_OPTION){
+            FAccueil dad=((FAccueil)getParent()).getFichAccueil();
+            dad.getFichActions().setVisible(false);
             FAccueil fichAccueil = new FAccueil();
             this.setVisible(false);
             fichAccueil.setVisible(true);

@@ -11,6 +11,7 @@ package Fiches;
 
 
 import java.io.IOException;
+import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jeu_isotopic_256.Jouer;
@@ -25,6 +26,8 @@ public class FActions extends javax.swing.JDialog {
     public FActions(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        bQuitter.setVisible(false);
     }
 
     /**
@@ -37,9 +40,11 @@ public class FActions extends javax.swing.JDialog {
     private void initComponents() {
 
         bSauv = new javax.swing.JButton();
+        bQuitterSave = new javax.swing.JButton();
         bQuitter = new javax.swing.JButton();
         jLabelFondActions = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jSave = new javax.swing.JLabel();
+        JSaveDone = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -48,6 +53,7 @@ public class FActions extends javax.swing.JDialog {
         bSauv.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         bSauv.setForeground(new java.awt.Color(255, 255, 255));
         bSauv.setText("Sauvegarder");
+        bSauv.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         bSauv.setFocusable(false);
         bSauv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,45 +62,73 @@ public class FActions extends javax.swing.JDialog {
         });
         getContentPane().add(bSauv, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, -1));
 
+        bQuitterSave.setBackground(new java.awt.Color(255, 0, 255));
+        bQuitterSave.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        bQuitterSave.setForeground(new java.awt.Color(255, 255, 255));
+        bQuitterSave.setText("Quitter sans sauvegarder");
+        bQuitterSave.setFocusable(false);
+        bQuitterSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bQuitterSaveActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bQuitterSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+
         bQuitter.setBackground(new java.awt.Color(255, 0, 255));
         bQuitter.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         bQuitter.setForeground(new java.awt.Color(255, 255, 255));
-        bQuitter.setText("Quitter sans sauvegarder");
+        bQuitter.setText("Quitter");
+        bQuitter.setAlignmentY(0.0F);
         bQuitter.setFocusable(false);
         bQuitter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bQuitterActionPerformed(evt);
             }
         });
-        getContentPane().add(bQuitter, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        getContentPane().add(bQuitter, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 240, -1, -1));
 
-        jLabelFondActions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/FondFicheActions.png"))); // NOI18N
-        getContentPane().add(jLabelFondActions, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabelFondActions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Fond_FActions.gif"))); // NOI18N
+        getContentPane().add(jLabelFondActions, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 300));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/FondFicheActions.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 300));
+        jSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fiches/Fond_Sauvegarde.gif"))); // NOI18N
+        getContentPane().add(jSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 300));
+
+        JSaveDone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Fond_Save_Done (2).gif"))); // NOI18N
+        getContentPane().add(JSaveDone, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bQuitterSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bQuitterSaveActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_bQuitterSaveActionPerformed
+
+    private void bSauvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSauvActionPerformed
+       
+            
+    // TODO add your handling code here:
+    bQuitterSave.setVisible(false);
+    bSauv.setVisible(false);
+    FJouer f=((FAccueil)getParent()).getFichJouer();
+    try {
+        f.getPartie().SavePartie(f.getELmaxNom());
+    } catch (IOException ex) {
+        Logger.getLogger(FActions.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    f.setVisible(false);
+    jLabelFondActions.setVisible(false);
+    jSave.setVisible(false);
+    bQuitter.setVisible(true);
+
+    }//GEN-LAST:event_bSauvActionPerformed
 
     private void bQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bQuitterActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_bQuitterActionPerformed
 
-    private void bSauvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSauvActionPerformed
-       
-            // TODO add your handling code here:
-           FJouer f=((FAccueil)getParent()).getFichJouer();
-        try {
-            f.getPartie().SavePartie(f.getELmaxNom());
-        } catch (IOException ex) {
-            Logger.getLogger(FActions.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        System.exit(0);
-        
-    }//GEN-LAST:event_bSauvActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -138,9 +172,11 @@ public class FActions extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JSaveDone;
     private javax.swing.JButton bQuitter;
+    private javax.swing.JButton bQuitterSave;
     private javax.swing.JButton bSauv;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelFondActions;
+    private javax.swing.JLabel jSave;
     // End of variables declaration//GEN-END:variables
 }

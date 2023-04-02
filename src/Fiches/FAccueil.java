@@ -52,7 +52,9 @@ public class FAccueil extends javax.swing.JFrame implements KeyListener {
         return fichActions;
     }
     
-    
+    public FAccueil getFichAccueil() {
+        return this;
+    }
     
     
 
@@ -105,7 +107,7 @@ public class FAccueil extends javax.swing.JFrame implements KeyListener {
         getContentPane().add(bJouer, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 160, 40));
         bJouer.getAccessibleContext().setAccessibleDescription("");
 
-        jLabelPageAccueil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Jeu Isotopic 256.png"))); // NOI18N
+        jLabelPageAccueil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Page_FAccueil.gif"))); // NOI18N
         getContentPane().add(jLabelPageAccueil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();

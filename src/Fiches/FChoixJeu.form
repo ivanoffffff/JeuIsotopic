@@ -62,7 +62,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="140" y="180" width="290" height="80"/>
+          <AbsoluteConstraints x="130" y="171" width="290" height="80"/>
         </Constraint>
       </Constraints>
 
@@ -183,7 +183,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="80" y="310" width="-1" height="80"/>
+          <AbsoluteConstraints x="80" y="307" width="-1" height="80"/>
         </Constraint>
       </Constraints>
 
@@ -276,7 +276,7 @@
     <Component class="javax.swing.JLabel" name="jLabelIntermediaire">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Images/Imm_choixJeu.png"/>
+          <Image iconType="3" name="/Images/fond_FChoix (2).gif"/>
         </Property>
       </Properties>
       <Constraints>

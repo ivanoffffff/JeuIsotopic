@@ -26,7 +26,7 @@ public class FChoixJeu extends javax.swing.JDialog {
     public FChoixJeu(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        //setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE );
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE );
         setLocationRelativeTo(null);
         this.setTitle("CHOIX DU JOUEUR");
         jPanelBoutonTgrille.setOpaque(false);
@@ -165,7 +165,7 @@ public class FChoixJeu extends javax.swing.JDialog {
                 .addGap(20, 20, 20))
         );
 
-        getContentPane().add(jPanelBoutonTgrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 290, 80));
+        getContentPane().add(jPanelBoutonTgrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 171, 290, 80));
 
         bJouer.setBackground(new java.awt.Color(102, 102, 255));
         bJouer.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -239,9 +239,9 @@ public class FChoixJeu extends javax.swing.JDialog {
                 .addGap(20, 20, 20))
         );
 
-        getContentPane().add(jPanelBoutonElmax, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, -1, 80));
+        getContentPane().add(jPanelBoutonElmax, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 307, -1, 80));
 
-        jLabelIntermediaire.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Imm_choixJeu.png"))); // NOI18N
+        jLabelIntermediaire.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fond_FChoix (2).gif"))); // NOI18N
         getContentPane().add(jLabelIntermediaire, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
