@@ -26,7 +26,7 @@ import javax.swing.JLabel;
 
 public class Jouer {
     
-    private long Score;
+    private long Score=0;
     private final String PartieSauv="PartieSauv.txt";
     int Tgrille;
     private Element[][] grille;
