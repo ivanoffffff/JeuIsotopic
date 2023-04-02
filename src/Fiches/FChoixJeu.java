@@ -341,7 +341,7 @@ public class FChoixJeu extends javax.swing.JDialog {
             fAct.setVisible(true);
             f.setVisible(true);
         }
-                
+
     }//GEN-LAST:event_bJouerActionPerformed
 
     private void RadioBoutonN256ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioBoutonN256ActionPerformed
