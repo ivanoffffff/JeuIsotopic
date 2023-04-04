@@ -24,11 +24,11 @@ public class ElementInstable extends Element {
     }
 
     public String toString() {
-        return super.toString()+"("+(TempsVie+1)+")";
+        return super.toString()+"("+(TempsVie)+")";
     }
     
     public String toString2() {
-        return "("+(TempsVie+1)+")";
+        return "("+(TempsVie)+")";
     }
     
     public String affich(){

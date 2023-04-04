@@ -149,7 +149,8 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         this.Tgrille=Tgrille;
         Partie=new Jouer(Tgrille);
         creation();
-        Partie.debuterTest(Tgrille);
+        Partie.debuter(Tgrille);
+        //Partie.debuterTest(Tgrille);
         Partie.afficher(tabLab);
         jScore.setText(Long.toString(Partie.getScore()));
         jElmax.setText(ELmaxNom);
@@ -220,9 +221,10 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         if (newPartie==YES_OPTION){
             FAccueil dad=((FAccueil)getParent()).getFichAccueil();
             dad.getFichActions().setVisible(false);
-            FAccueil fichAccueil = new FAccueil();
-            this.setVisible(false);
-            fichAccueil.setVisible(true);
+            dad.getFichChoix().setVisible(true);
+            //FAccueil fichAccueil = new FAccueil();
+            //this.setVisible(false);
+            //fichAccueil.setVisible(true);
         }
         else if (newPartie==NO_OPTION){
             System.exit(0);

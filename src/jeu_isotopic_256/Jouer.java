@@ -113,8 +113,9 @@ public class Jouer {
                 tablab[i][k].setIcon(null);
                 tablab[i][k].setText(null);
                 tablab[i][k].setIcon(new javax.swing.ImageIcon(getClass().getResource((grille[i][k].affich()))));
-                if (grille[i][k].getNumeroEl()==8||grille[i][k].getNumeroEl()==32||grille[i][k].getNumeroEl()==128)
+                if (grille[i][k].getNumeroEl()==8||grille[i][k].getNumeroEl()==32||grille[i][k].getNumeroEl()==128){
                     tablab[i][k].setText(String.valueOf(grille[i][k].getTempsVie()));
+                }
             }
         }
     }
@@ -330,7 +331,7 @@ public class Jouer {
         return Score;
     }
 
-    public boolean AplDeplacementFusion(String direction){ //Inutile maintenant qu'on utilise le Keylistener
+    public boolean AplDeplacementFusion(String direction){
         boolean deplacement=true;
         boolean fusion=true;
         int nbChangements=0;
@@ -396,7 +397,7 @@ public class Jouer {
                     case "Be" ->                         {
                             int tempVie=grille[i][j].getTempsVie();
                             //System.out.println(tempVie);
-                            if (tempVie==0)
+                            if (tempVie==1)
                                 grille[i][j]=vide;
                             else
                                 grille[i][j]=new ElementInstable("Be",8,tempVie-1);
@@ -404,7 +405,7 @@ public class Jouer {
                     case "P" ->                         {
                             int tempVie=grille[i][j].getTempsVie();
                             //System.out.println(tempVie);
-                            if (tempVie==0)
+                            if (tempVie==1)
                                 grille[i][j]=vide;
                             else
                                 grille[i][j]=new ElementInstable("P",32,tempVie-1);
@@ -412,7 +413,7 @@ public class Jouer {
                     case "Sn" ->                         {
                             int tempVie=grille[i][j].getTempsVie();
                             //System.out.println(tempVie);
-                            if (tempVie==0)
+                            if (tempVie==1)
                                 grille[i][j]=vide;
                             else
                                 grille[i][j]=new ElementInstable("Sn",128,tempVie-1);

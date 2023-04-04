@@ -122,6 +122,7 @@ public class FChoixJeu extends javax.swing.JDialog {
 
         bGroupeTaille.add(RadioBouton4x4);
         RadioBouton4x4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 30)); // NOI18N
+        RadioBouton4x4.setSelected(true);
         RadioBouton4x4.setText("4x4");
         RadioBouton4x4.setBorder(null);
         RadioBouton4x4.setFocusable(false);
@@ -133,7 +134,6 @@ public class FChoixJeu extends javax.swing.JDialog {
 
         bGroupeTaille.add(RadioBouton3x3);
         RadioBouton3x3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 30)); // NOI18N
-        RadioBouton3x3.setSelected(true);
         RadioBouton3x3.setText("3x3");
         RadioBouton3x3.setBorder(null);
         RadioBouton3x3.setFocusable(false);
@@ -225,6 +225,7 @@ public class FChoixJeu extends javax.swing.JDialog {
 
         bGroupeEl.add(RadioBoutonN256);
         RadioBoutonN256.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 30)); // NOI18N
+        RadioBoutonN256.setSelected(true);
         RadioBoutonN256.setText("N 256");
         RadioBoutonN256.setBorder(null);
         RadioBoutonN256.setFocusable(false);
@@ -258,7 +259,6 @@ public class FChoixJeu extends javax.swing.JDialog {
 
         bGroupeEl.add(RadioBouttonOg1024);
         RadioBouttonOg1024.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 30)); // NOI18N
-        RadioBouttonOg1024.setSelected(true);
         RadioBouttonOg1024.setText("Og 1024");
         RadioBouttonOg1024.setBorder(null);
         RadioBouttonOg1024.setFocusable(false);

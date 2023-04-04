@@ -70,6 +70,10 @@ public class FAccueil extends javax.swing.JFrame implements KeyListener {
         bCharger = new javax.swing.JButton();
         bJouer = new javax.swing.JButton();
         jLabelPageAccueil = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        mTheme = new javax.swing.JMenu();
+        mitheme1 = new javax.swing.JMenuItem();
+        mitheme2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -110,6 +114,23 @@ public class FAccueil extends javax.swing.JFrame implements KeyListener {
         jLabelPageAccueil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Page_FAccueil.gif"))); // NOI18N
         getContentPane().add(jLabelPageAccueil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        mTheme.setText("Thème");
+
+        mitheme1.setText("Ice'Breaker");
+        mitheme1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitheme1ActionPerformed(evt);
+            }
+        });
+        mTheme.add(mitheme1);
+
+        mitheme2.setText("Meuh'Tard");
+        mTheme.add(mitheme2);
+
+        jMenuBar1.add(mTheme);
+
+        setJMenuBar(jMenuBar1);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -130,6 +151,11 @@ public class FAccueil extends javax.swing.JFrame implements KeyListener {
         this.setVisible(false);
         fichChoix.setVisible(true);
     }//GEN-LAST:event_bJouerActionPerformed
+
+    private void mitheme1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitheme1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_mitheme1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,6 +196,10 @@ public class FAccueil extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JButton bCharger;
     private javax.swing.JButton bJouer;
     private javax.swing.JLabel jLabelPageAccueil;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu mTheme;
+    private javax.swing.JMenuItem mitheme1;
+    private javax.swing.JMenuItem mitheme2;
     // End of variables declaration//GEN-END:variables
 
     @Override
