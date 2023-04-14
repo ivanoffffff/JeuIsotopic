@@ -34,7 +34,7 @@ public class FReglesJeu extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        FReglesJeu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Fiches/Fond_FRegle_.gif"))); // NOI18N
+        FReglesJeu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Fond_FRegle_.gif"))); // NOI18N
         getContentPane().add(FReglesJeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
