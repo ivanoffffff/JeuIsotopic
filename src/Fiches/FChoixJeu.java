@@ -33,7 +33,6 @@ public class FChoixJeu extends javax.swing.JDialog {
         RadioBouton3x3.setOpaque(false);
         RadioBouton5x5.setOpaque(false);
         RadioBouton6x6.setOpaque(false);
-        RadioBouton7x7.setOpaque(false);
         RadioBoutonSn128.setOpaque(false);
         RadioBoutonN256.setOpaque(false);
         RadioBoutonGe512.setOpaque(false);
@@ -53,10 +52,6 @@ public class FChoixJeu extends javax.swing.JDialog {
         
         else if(RadioBouton6x6.isSelected())
             Tgrille=6;
-        
-        else if(RadioBouton7x7.isSelected())
-            Tgrille=7;
-        
         return Tgrille;
     }
     
@@ -93,7 +88,6 @@ public class FChoixJeu extends javax.swing.JDialog {
         RadioBouton3x3 = new javax.swing.JRadioButton();
         RadioBouton6x6 = new javax.swing.JRadioButton();
         RadioBouton5x5 = new javax.swing.JRadioButton();
-        RadioBouton7x7 = new javax.swing.JRadioButton();
         bJouer = new javax.swing.JButton();
         jPanelBoutonElmax = new javax.swing.JPanel();
         RadioBoutonN256 = new javax.swing.JRadioButton();
@@ -165,17 +159,6 @@ public class FChoixJeu extends javax.swing.JDialog {
             }
         });
 
-        bGroupeTaille.add(RadioBouton7x7);
-        RadioBouton7x7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 30)); // NOI18N
-        RadioBouton7x7.setText("7x7");
-        RadioBouton7x7.setBorder(null);
-        RadioBouton7x7.setFocusable(false);
-        RadioBouton7x7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RadioBouton7x7ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanelBoutonTgrilleLayout = new javax.swing.GroupLayout(jPanelBoutonTgrille);
         jPanelBoutonTgrille.setLayout(jPanelBoutonTgrilleLayout);
         jPanelBoutonTgrilleLayout.setHorizontalGroup(
@@ -189,24 +172,21 @@ public class FChoixJeu extends javax.swing.JDialog {
                 .addComponent(RadioBouton5x5)
                 .addGap(18, 18, 18)
                 .addComponent(RadioBouton6x6)
-                .addGap(18, 18, 18)
-                .addComponent(RadioBouton7x7)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanelBoutonTgrilleLayout.setVerticalGroup(
             jPanelBoutonTgrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBoutonTgrilleLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jPanelBoutonTgrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RadioBouton4x4)
                     .addComponent(RadioBouton3x3)
                     .addComponent(RadioBouton6x6)
-                    .addComponent(RadioBouton5x5)
-                    .addComponent(RadioBouton7x7))
+                    .addComponent(RadioBouton5x5))
                 .addGap(20, 20, 20))
         );
 
-        getContentPane().add(jPanelBoutonTgrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 440, 80));
+        getContentPane().add(jPanelBoutonTgrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 360, 80));
 
         bJouer.setBackground(new java.awt.Color(102, 102, 255));
         bJouer.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -364,10 +344,6 @@ public class FChoixJeu extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_RadioBouton5x5ActionPerformed
 
-    private void RadioBouton7x7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioBouton7x7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RadioBouton7x7ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -416,7 +392,6 @@ public class FChoixJeu extends javax.swing.JDialog {
     private javax.swing.JRadioButton RadioBouton4x4;
     private javax.swing.JRadioButton RadioBouton5x5;
     private javax.swing.JRadioButton RadioBouton6x6;
-    private javax.swing.JRadioButton RadioBouton7x7;
     private javax.swing.JRadioButton RadioBoutonGe512;
     private javax.swing.JRadioButton RadioBoutonN256;
     private javax.swing.JRadioButton RadioBoutonSn128;
