@@ -27,6 +27,7 @@ public class FAccueil extends javax.swing.JFrame implements KeyListener {
     private FChoixJeu fichChoix;
     private FJouer fichJouer;
     private FActions fichActions;
+    private FReglesJeu fichRegle;
 
     
     public FAccueil() {
@@ -38,6 +39,7 @@ public class FAccueil extends javax.swing.JFrame implements KeyListener {
         fichChoix = new FChoixJeu(this,false);
         fichJouer = new FJouer(this,false);
         fichActions = new FActions(this,false);
+        fichRegle = new FReglesJeu(this,false);
     }
 
     public FJouer getFichJouer() {
@@ -55,6 +57,11 @@ public class FAccueil extends javax.swing.JFrame implements KeyListener {
     public FAccueil getFichAccueil() {
         return this;
     }
+
+    public FReglesJeu getFichRegle() {
+        return fichRegle;
+    }
+    
     
     
 
@@ -67,8 +74,9 @@ public class FAccueil extends javax.swing.JFrame implements KeyListener {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bCharger = new javax.swing.JButton();
+        bRègles = new javax.swing.JButton();
         bJouer = new javax.swing.JButton();
+        bCharger1 = new javax.swing.JButton();
         jLabelPageAccueil = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mTheme = new javax.swing.JMenu();
@@ -78,21 +86,21 @@ public class FAccueil extends javax.swing.JFrame implements KeyListener {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bCharger.setBackground(new java.awt.Color(102, 102, 255));
-        bCharger.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        bCharger.setForeground(new java.awt.Color(255, 255, 255));
-        bCharger.setText("Charger partie");
-        bCharger.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        bCharger.setFocusable(false);
-        bCharger.setMaximumSize(new java.awt.Dimension(130, 25));
-        bCharger.setMinimumSize(new java.awt.Dimension(130, 25));
-        bCharger.setPreferredSize(new java.awt.Dimension(130, 25));
-        bCharger.addActionListener(new java.awt.event.ActionListener() {
+        bRègles.setBackground(new java.awt.Color(153, 51, 255));
+        bRègles.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        bRègles.setForeground(new java.awt.Color(255, 255, 255));
+        bRègles.setText("Règles du jeu");
+        bRègles.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        bRègles.setFocusable(false);
+        bRègles.setMaximumSize(new java.awt.Dimension(130, 25));
+        bRègles.setMinimumSize(new java.awt.Dimension(130, 25));
+        bRègles.setPreferredSize(new java.awt.Dimension(130, 25));
+        bRègles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bChargerActionPerformed(evt);
+                bRèglesActionPerformed(evt);
             }
         });
-        getContentPane().add(bCharger, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, 160, 40));
+        getContentPane().add(bRègles, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 460, 160, 40));
 
         bJouer.setBackground(new java.awt.Color(255, 0, 255));
         bJouer.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -108,8 +116,24 @@ public class FAccueil extends javax.swing.JFrame implements KeyListener {
                 bJouerActionPerformed(evt);
             }
         });
-        getContentPane().add(bJouer, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 160, 40));
+        getContentPane().add(bJouer, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 160, 40));
         bJouer.getAccessibleContext().setAccessibleDescription("");
+
+        bCharger1.setBackground(new java.awt.Color(102, 102, 255));
+        bCharger1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        bCharger1.setForeground(new java.awt.Color(255, 255, 255));
+        bCharger1.setText("Charger partie");
+        bCharger1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        bCharger1.setFocusable(false);
+        bCharger1.setMaximumSize(new java.awt.Dimension(130, 25));
+        bCharger1.setMinimumSize(new java.awt.Dimension(130, 25));
+        bCharger1.setPreferredSize(new java.awt.Dimension(130, 25));
+        bCharger1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCharger1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bCharger1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, 160, 40));
 
         jLabelPageAccueil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Page_FAccueil.gif"))); // NOI18N
         getContentPane().add(jLabelPageAccueil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -134,17 +158,10 @@ public class FAccueil extends javax.swing.JFrame implements KeyListener {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bChargerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bChargerActionPerformed
+    private void bRèglesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRèglesActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        try {
-            fichJouer.Init();
-        } catch (IOException ex) {
-            Logger.getLogger(FAccueil.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        fichActions.setVisible(true);
-        fichJouer.setVisible(true);
-    }//GEN-LAST:event_bChargerActionPerformed
+        fichRegle.setVisible(true);
+    }//GEN-LAST:event_bRèglesActionPerformed
 
     private void bJouerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bJouerActionPerformed
         // TODO add your handling code here:
@@ -156,6 +173,18 @@ public class FAccueil extends javax.swing.JFrame implements KeyListener {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_mitheme1ActionPerformed
+
+    private void bCharger1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCharger1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        try {
+            fichJouer.Init();
+        } catch (IOException ex) {
+            Logger.getLogger(FAccueil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        fichActions.setVisible(true);
+        fichJouer.setVisible(true);
+    }//GEN-LAST:event_bCharger1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,8 +222,9 @@ public class FAccueil extends javax.swing.JFrame implements KeyListener {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bCharger;
+    private javax.swing.JButton bCharger1;
     private javax.swing.JButton bJouer;
+    private javax.swing.JButton bRègles;
     private javax.swing.JLabel jLabelPageAccueil;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu mTheme;

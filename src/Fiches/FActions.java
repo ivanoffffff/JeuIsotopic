@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import jeu_isotopic_256.Jouer;
 
+
 public class FActions extends javax.swing.JDialog {
 
     /**
@@ -23,11 +24,12 @@ public class FActions extends javax.swing.JDialog {
      */
     
     
+    
     public FActions(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        bQuitter.setVisible(false);
+        jQuitter.setVisible(false);
     }
 
     /**
@@ -41,7 +43,8 @@ public class FActions extends javax.swing.JDialog {
 
         bSauv = new javax.swing.JButton();
         bQuitterSave = new javax.swing.JButton();
-        bQuitter = new javax.swing.JButton();
+        jQuitter = new javax.swing.JButton();
+        bRegle = new javax.swing.JButton();
         jLabelFondActions = new javax.swing.JLabel();
         jSave = new javax.swing.JLabel();
         JSaveDone = new javax.swing.JLabel();
@@ -60,7 +63,7 @@ public class FActions extends javax.swing.JDialog {
                 bSauvActionPerformed(evt);
             }
         });
-        getContentPane().add(bSauv, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, -1));
+        getContentPane().add(bSauv, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 95, -1, -1));
 
         bQuitterSave.setBackground(new java.awt.Color(255, 0, 255));
         bQuitterSave.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -72,20 +75,31 @@ public class FActions extends javax.swing.JDialog {
                 bQuitterSaveActionPerformed(evt);
             }
         });
-        getContentPane().add(bQuitterSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        getContentPane().add(bQuitterSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 160, -1, -1));
 
-        bQuitter.setBackground(new java.awt.Color(255, 0, 255));
-        bQuitter.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        bQuitter.setForeground(new java.awt.Color(255, 255, 255));
-        bQuitter.setText("Quitter");
-        bQuitter.setAlignmentY(0.0F);
-        bQuitter.setFocusable(false);
-        bQuitter.addActionListener(new java.awt.event.ActionListener() {
+        jQuitter.setBackground(new java.awt.Color(255, 0, 255));
+        jQuitter.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jQuitter.setForeground(new java.awt.Color(255, 255, 255));
+        jQuitter.setText("Quitter");
+        jQuitter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bQuitterActionPerformed(evt);
+                jQuitterActionPerformed(evt);
             }
         });
-        getContentPane().add(bQuitter, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 240, -1, -1));
+        getContentPane().add(jQuitter, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 230, -1, -1));
+
+        bRegle.setBackground(new java.awt.Color(153, 51, 255));
+        bRegle.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        bRegle.setForeground(new java.awt.Color(255, 255, 255));
+        bRegle.setText("Règles du jeu");
+        bRegle.setAlignmentY(0.0F);
+        bRegle.setFocusable(false);
+        bRegle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRegleActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bRegle, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 225, -1, -1));
 
         jLabelFondActions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Fond_FActions.gif"))); // NOI18N
         getContentPane().add(jLabelFondActions, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 300));
@@ -119,14 +133,21 @@ public class FActions extends javax.swing.JDialog {
     f.setVisible(false);
     jLabelFondActions.setVisible(false);
     jSave.setVisible(false);
-    bQuitter.setVisible(true);
+    bRegle.setVisible(false);
+    jQuitter.setVisible(true);
 
     }//GEN-LAST:event_bSauvActionPerformed
 
-    private void bQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bQuitterActionPerformed
+    private void bRegleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegleActionPerformed
+        // TODO add your handling code here:
+        FReglesJeu f=((FAccueil)getParent()).getFichRegle();
+        f.setVisible(true);
+    }//GEN-LAST:event_bRegleActionPerformed
+
+    private void jQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jQuitterActionPerformed
         // TODO add your handling code here:
         System.exit(0);
-    }//GEN-LAST:event_bQuitterActionPerformed
+    }//GEN-LAST:event_jQuitterActionPerformed
 
     
     /**
@@ -173,10 +194,11 @@ public class FActions extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JSaveDone;
-    private javax.swing.JButton bQuitter;
     private javax.swing.JButton bQuitterSave;
+    private javax.swing.JButton bRegle;
     private javax.swing.JButton bSauv;
     private javax.swing.JLabel jLabelFondActions;
+    private javax.swing.JButton jQuitter;
     private javax.swing.JLabel jSave;
     // End of variables declaration//GEN-END:variables
 }
