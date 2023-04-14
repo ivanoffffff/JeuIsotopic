@@ -4,6 +4,7 @@
  */
 package Fiches;
 
+import java.awt.geom.RoundRectangle2D;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.YES_NO_OPTION;
 import static javax.swing.JOptionPane.YES_OPTION;
@@ -37,6 +38,7 @@ public class FChoixJeu extends javax.swing.JDialog {
         RadioBoutonN256.setOpaque(false);
         RadioBoutonGe512.setOpaque(false);
         RadioBouttonOg1024.setOpaque(false);
+        setShape(new RoundRectangle2D.Double(0,0,getWidth(),getHeight(),50,50));
     }
     
     
@@ -97,6 +99,7 @@ public class FChoixJeu extends javax.swing.JDialog {
         jLabelIntermediaire = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bRetour.setBackground(new java.awt.Color(255, 0, 255));

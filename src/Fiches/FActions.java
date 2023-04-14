@@ -10,6 +10,7 @@ package Fiches;
  */
 
 
+import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
 import static java.lang.Thread.sleep;
 import java.util.logging.Level;
@@ -30,6 +31,8 @@ public class FActions extends javax.swing.JDialog {
         initComponents();
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         jQuitter.setVisible(false);
+        setShape(new RoundRectangle2D.Double(0,0,getWidth(),getHeight(),50,50));
+        
     }
 
     /**
@@ -50,6 +53,8 @@ public class FActions extends javax.swing.JDialog {
         JSaveDone = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
+        setShape(new RoundRectangle2D.Double(0,0,getWidth(),getHeight(),50,50));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bSauv.setBackground(new java.awt.Color(102, 102, 255));

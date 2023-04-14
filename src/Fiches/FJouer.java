@@ -9,6 +9,7 @@ import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
 import javax.swing.Icon;
 import javax.swing.JLabel;
@@ -45,7 +46,7 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         setLocationRelativeTo(null);
         this.addKeyListener(this);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
+        setShape(new RoundRectangle2D.Double(0,0,getWidth(),getHeight(),50,50));
     }
 
     public Jouer getPartie() {
@@ -73,6 +74,7 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         JFJouer = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pGrille.setFocusable(false);
