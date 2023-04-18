@@ -84,14 +84,14 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         pGrille.setLayout(pGrilleLayout);
         pGrilleLayout.setHorizontalGroup(
             pGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 440, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
         pGrilleLayout.setVerticalGroup(
             pGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 440, Short.MAX_VALUE)
+            .addGap(0, 480, Short.MAX_VALUE)
         );
 
-        getContentPane().add(pGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 440, 440));
+        getContentPane().add(pGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 470, 480));
 
         jScore.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jScore.setForeground(new java.awt.Color(204, 255, 255));
@@ -151,7 +151,7 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         this.Tgrille=Tgrille;
         Partie=new Jouer(Tgrille);
         creation();
-        Partie.debuter(Tgrille);
+        Partie.debuter(Tgrille,ElmaxNom);
         //Partie.debuterTest(Tgrille);
         Partie.afficher(tabLab);
         jScore.setText(Long.toString(Partie.getScore()));
@@ -162,7 +162,7 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         // Récupérez la touche qui a été enfoncée
-        if (Partie.FinPartie(ELmaxNom).equals("CONTINUE")){
+        if (Partie.FinPartie().equals("CONTINUE")){
             int keyCode = e.getKeyCode();
 
             // Vérifiez si la touche enfoncée est Z, Q, S ou D
@@ -204,7 +204,7 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
             }
             jElmax.setText(ELmaxNom);
             jScore.setText(Long.toString(Partie.getScore()));
-            if (Partie.FinPartie(ELmaxNom).equals("WIN")||Partie.FinPartie(ELmaxNom).equals("LOSE")){
+            if (Partie.FinPartie().equals("WIN")||Partie.FinPartie().equals("LOSE")){
                 FAccueil dad=((FAccueil)getParent()).getFichAccueil();
                 dad.getFichActions().setVisible(false);
                 fin();
@@ -214,7 +214,7 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
     
     public void fin(){
         int newPartie;
-        if (Partie.FinPartie(ELmaxNom).equals("WIN")){
+        if (Partie.FinPartie().equals("WIN")){
             newPartie=JOptionPane.showConfirmDialog(this,"Félicitation vous avez réussi à atteintre l'élément "+ELmaxNom+" !! \n\n        Voulez-vous relancer une nouvelle partie?","Félicitation",YES_NO_OPTION);
         }
         else{
@@ -224,6 +224,7 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
             FAccueil dad=((FAccueil)getParent()).getFichAccueil();
             dad.getFichActions().setVisible(false);
             dad.getFichChoix().setVisible(true);
+            this.setVisible(false);
             //FAccueil fichAccueil = new FAccueil();
             //this.setVisible(false);
             //fichAccueil.setVisible(true);

@@ -27,21 +27,22 @@ import javax.swing.JLabel;
 public class Jouer {
     
     private long Score=0;
-    private final String PartieSauv="PartieSauv.txt";
+    private final static String PartieSauv="PartieSauv.txt";
     int Tgrille;
     private Element[][] grille;
-    Element H=new Element("H",2);
-    Element He=new Element("He",4);
-    Element Be=new ElementInstable("Be",8,6);
-    Element O=new Element("O",16);
-    Element P=new ElementInstable("P",32,24);
-    Element Ni=new Element("Ni",64);
-    Element Sn=new ElementInstable("Sn",128,96);
-    Element N=new Element("N",256);
-    Element Ge=new Element("Ge",512);
-    Element Og=new Element("Og",1024);
-    Element vide =new Element(" ");
-    private final Element ClassementElement[]={H,He,Be,O,P,Ni,Sn,N,Ge,Og}; 
+    final static Element H=new Element("H",2);
+    final static Element He=new Element("He",4);
+    final static Element Be=new ElementInstable("Be",8,6);
+    final static Element O=new Element("O",16);
+    final static Element P=new ElementInstable("P",32,24);
+    final static Element Ni=new Element("Ni",64);
+    final static Element Sn=new ElementInstable("Sn",128,96);
+    final static Element N=new Element("N",256);
+    final static Element Ge=new Element("Ge",512);
+    final static Element Og=new Element("Og",1024);
+    final static Element vide =new Element(" ");
+    String ElMaxNom;
+    private final static Element ClassementElement[]={H,He,Be,O,P,Ni,Sn,N,Ge,Og}; 
 
     public Jouer(int Tgrille) {
         this.Tgrille=Tgrille;
@@ -57,23 +58,20 @@ public class Jouer {
     }
     
 
-    public void debuter(int Tgrille){
+    public void debuter(int Tgrille,String ElMaxNom){
+        this.ElMaxNom=ElMaxNom;
         Random line = new Random();
         int nbTuileDebut=2;
-        Random Eldepart= new Random();
-        int z=Eldepart.nextInt(2);
         for(int i=0;i<nbTuileDebut;i++){
             int x=line.nextInt(Tgrille);
             int y=line.nextInt(Tgrille);
             if (verifVide(x,y)==true){
-                if (z==1){
+                if (i==0)
                     grille[x][y]=H;
-                }
-                else{
+                else if (i==1)
                     grille[x][y]=He;
-                }
             }
-            else 
+            else
                 i=i-1;
         }
         Score=0;
@@ -393,37 +391,15 @@ public class Jouer {
         
         for (int i=0;i<Tgrille;i++){
             for (int j=0;j<Tgrille;j++){
-                switch (grille[i][j].getNomEl()) {
-                    case "Be" ->                         {
-                            int tempVie=grille[i][j].getTempsVie();
-                            //System.out.println(tempVie);
-                            if (tempVie==1)
-                                grille[i][j]=vide;
-                            else
-                                grille[i][j]=new ElementInstable("Be",8,tempVie-1);
-                        }
-                    case "P" ->                         {
-                            int tempVie=grille[i][j].getTempsVie();
-                            //System.out.println(tempVie);
-                            if (tempVie==1)
-                                grille[i][j]=vide;
-                            else
-                                grille[i][j]=new ElementInstable("P",32,tempVie-1);
-                        }
-                    case "Sn" ->                         {
-                            int tempVie=grille[i][j].getTempsVie();
-                            //System.out.println(tempVie);
-                            if (tempVie==1)
-                                grille[i][j]=vide;
-                            else
-                                grille[i][j]=new ElementInstable("Sn",128,tempVie-1);
-                        }
-                    default -> {
-                    }
-                }
+                grille[i][j]=grille[i][j].GestionTempsVie(grille[i][j]);
             }
         }
         
+        ajoutElement();
+        return true;
+    }
+    
+    public void ajoutElement(){
         Random line = new Random();
         Random ElAjout= new Random();
         int z=ElAjout.nextInt(2);
@@ -440,10 +416,8 @@ public class Jouer {
                     grille[x][y]=He;
                     ajout=true;
                 }
-                //System.out.println("ajout");
             }
         }
-        return true;
     }
 
     public void SavePartie(String max) throws IOException{
@@ -464,22 +438,7 @@ public class Jouer {
         BufferedReader br=new BufferedReader(Sauv);
         String ligne1=br.readLine();
         String[]tab=ligne1.split("/");
-        String nomElmax=tab[0];
-        int Elmax;
-        switch (nomElmax) {
-            case "Sn":
-                Elmax=128;
-                break;
-            case "N":
-                Elmax=256;
-                break;
-            case "Ge":
-                Elmax=512;
-                break;
-            default:
-                Elmax=1024;
-                break;
-        }
+        ElMaxNom=tab[0];
         Tgrille=Integer.parseInt(tab[1]);
         Score=Integer.parseInt(tab[2]);
         grille=new Element[Tgrille][Tgrille];
@@ -516,7 +475,7 @@ public class Jouer {
             ligne=br.readLine();
         }
         Sauv.close();
-        return nomElmax;
+        return ElMaxNom;
     }
     
     public boolean deplacementPossible(){
@@ -538,10 +497,10 @@ public class Jouer {
     }
     
 
-    public String FinPartie(String max){
+    public String FinPartie(){
         for (int i=0;i<Tgrille;i++){
             for (int j=0;j<Tgrille;j++){
-                if (grille[i][j].getNomEl().equals(max)){
+                if (grille[i][j].getNomEl().equals(ElMaxNom)){
                     return "WIN";
                 }
             }

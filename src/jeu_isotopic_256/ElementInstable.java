@@ -4,6 +4,8 @@
  */
 package jeu_isotopic_256;
 
+import static jeu_isotopic_256.Jouer.vide;
+
 /*
  Andre Léonard
  Bosq Lucas
@@ -47,6 +49,38 @@ public class ElementInstable extends Element {
     
     public String versFichier(){
         return super.versFichier()+"/"+TempsVie;   
+    }
+    
+    public Element GestionTempsVie(Element El){
+        switch (El.getNomEl()) {
+                    case "Be" ->                         {
+                            int tempVie=El.getTempsVie();
+                            //System.out.println(tempVie);
+                            if (tempVie==1)
+                                El=vide;
+                            else
+                                El=new ElementInstable("Be",8,tempVie-1);
+                        }
+                    case "P" ->                         {
+                            int tempVie=El.getTempsVie();
+                            //System.out.println(tempVie);
+                            if (tempVie==1)
+                                El=vide;
+                            else
+                                El=new ElementInstable("P",32,tempVie-1);
+                        }
+                    case "Sn" ->                         {
+                            int tempVie=El.getTempsVie();
+                            //System.out.println(tempVie);
+                            if (tempVie==1)
+                                El=vide;
+                            else
+                                El=new ElementInstable("Sn",128,tempVie-1);
+                        }
+                    default -> {
+                    }
+                }
+        return El;
     }
 
 }

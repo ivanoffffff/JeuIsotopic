@@ -84,6 +84,7 @@ public class FAccueil extends javax.swing.JFrame implements KeyListener {
         mitheme2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bRègles.setBackground(new java.awt.Color(153, 51, 255));

@@ -34,10 +34,10 @@ public class Element {
         else 
             return NomEl + NumeroEl ;
     }
-    
+
     public String affich(){
         if (NomEl.equals(" ")==true)
-            return "/Images/El_Vide.png";
+            return "/Images/El_Vide (1).png";
         else if (NomEl.equals("H")==true){
             return "/Images/H2_rond (2).png";}
         else if (NomEl.equals("He")==true)
@@ -73,5 +73,9 @@ public class Element {
             return System.lineSeparator()+NomEl;
         }
         return System.lineSeparator()+NomEl+"/"+ NumeroEl; 
+    }
+    
+    public Element GestionTempsVie(Element El){
+        return El;
     }
 }
