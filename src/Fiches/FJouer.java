@@ -34,8 +34,8 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
     private JLabel[][]tabLab;
     private int Tgrille;
     private Jouer Partie;
-    private String ELmaxNom;    
-        
+    private String ELmaxNom;
+    
     
     //private final Icon ClassementElement[]={mm_choixjeu.png}; 
     
@@ -113,10 +113,12 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
 
     public void Init() throws IOException{
         Partie=new Jouer();
-        ELmaxNom=Partie.ChargerPartie();
+        FCharger fCharger=((FAccueil)getParent()).getFichCharger();
+        String NomJoueurCharge = fCharger.getNomJoueurCharge();
+        ELmaxNom=Partie.ChargerPartie(NomJoueurCharge);
         Tgrille=Partie.getTgrille();
         creation();
-        Partie.debuter();
+        Partie.debuter(NomJoueurCharge);
         Partie.afficher(tabLab);
         jScore.setText(Long.toString(Partie.getScore()));
         jElmax.setText(ELmaxNom);

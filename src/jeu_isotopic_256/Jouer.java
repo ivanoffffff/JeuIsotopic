@@ -77,8 +77,8 @@ public class Jouer {
         Score=0;
     }
     
-    public void debuter() throws IOException{
-        ChargerPartie();
+    public void debuter(String NomJoueur) throws IOException{
+        ChargerPartie(NomJoueur);
     }
     
     public void debuterTest(int Tgrille){
@@ -420,9 +420,9 @@ public class Jouer {
         }
     }
 
-    public void SavePartie(String max) throws IOException{
+    public void SavePartie(String max, String NomJoueur) throws IOException{
         
-        FileWriter Sauv=new FileWriter(PartieSauv);
+        FileWriter Sauv=new FileWriter("Sauv."+NomJoueur+".txt");
         Sauv.write(max+"/"+Tgrille+"/"+Score);
         for (int i=0;i<Tgrille;i++){
             for (int j=0;j<Tgrille;j++){
@@ -433,8 +433,8 @@ public class Jouer {
         Sauv.close();
     }
  
-    public String ChargerPartie() throws FileNotFoundException, IOException{
-        FileReader Sauv=new FileReader(PartieSauv);
+    public String ChargerPartie(String NomJoueur) throws FileNotFoundException, IOException{
+        FileReader Sauv=new FileReader("Sauv."+NomJoueur+".txt");
         BufferedReader br=new BufferedReader(Sauv);
         String ligne1=br.readLine();
         String[]tab=ligne1.split("/");

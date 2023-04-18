@@ -28,6 +28,7 @@ public class FAccueil extends javax.swing.JFrame implements KeyListener {
     private FJouer fichJouer;
     private FActions fichActions;
     private FReglesJeu fichRegle;
+    private FCharger fichCharger;
 
     
     public FAccueil() {
@@ -40,6 +41,7 @@ public class FAccueil extends javax.swing.JFrame implements KeyListener {
         fichJouer = new FJouer(this,false);
         fichActions = new FActions(this,false);
         fichRegle = new FReglesJeu(this,false);
+        fichCharger = new FCharger(this,false);
     }
 
     public FJouer getFichJouer() {
@@ -60,6 +62,10 @@ public class FAccueil extends javax.swing.JFrame implements KeyListener {
 
     public FReglesJeu getFichRegle() {
         return fichRegle;
+    }
+
+    public FCharger getFichCharger() {
+        return fichCharger;
     }
     
     
@@ -177,14 +183,16 @@ public class FAccueil extends javax.swing.JFrame implements KeyListener {
 
     private void bCharger1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCharger1ActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
+        /*this.setVisible(false);
         try {
             fichJouer.Init();
         } catch (IOException ex) {
             Logger.getLogger(FAccueil.class.getName()).log(Level.SEVERE, null, ex);
         }
         fichActions.setVisible(true);
-        fichJouer.setVisible(true);
+        fichJouer.setVisible(true);*/
+        this.setVisible(false);
+        fichCharger.setVisible(true);
     }//GEN-LAST:event_bCharger1ActionPerformed
 
     /**

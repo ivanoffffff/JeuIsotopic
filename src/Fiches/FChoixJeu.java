@@ -23,6 +23,7 @@ public class FChoixJeu extends javax.swing.JDialog {
     private int Elmax=256;
     private int Tgrille;
     private String ElmaxNom="N";
+    private String NomJoueur;
     
     public FChoixJeu(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -71,6 +72,10 @@ public class FChoixJeu extends javax.swing.JDialog {
 
         return Elmax;
     }
+    
+    public String getNomJoueur(){
+        return NomJoueur;
+    }
 
 
     /**
@@ -96,6 +101,7 @@ public class FChoixJeu extends javax.swing.JDialog {
         RadioBoutonSn128 = new javax.swing.JRadioButton();
         RadioBoutonGe512 = new javax.swing.JRadioButton();
         RadioBouttonOg1024 = new javax.swing.JRadioButton();
+        JPseudo = new javax.swing.JTextField();
         jLabelIntermediaire = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -189,7 +195,7 @@ public class FChoixJeu extends javax.swing.JDialog {
                 .addGap(20, 20, 20))
         );
 
-        getContentPane().add(jPanelBoutonTgrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 360, 80));
+        getContentPane().add(jPanelBoutonTgrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 360, 80));
 
         bJouer.setBackground(new java.awt.Color(102, 102, 255));
         bJouer.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -278,9 +284,17 @@ public class FChoixJeu extends javax.swing.JDialog {
                 .addGap(20, 20, 20))
         );
 
-        getContentPane().add(jPanelBoutonElmax, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 307, 530, 80));
+        getContentPane().add(jPanelBoutonElmax, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 530, 80));
 
-        jLabelIntermediaire.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fond_FChoix (2).gif"))); // NOI18N
+        JPseudo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        JPseudo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JPseudoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(JPseudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 105, 140, 30));
+
+        jLabelIntermediaire.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Fond_FChoix_.gif"))); // NOI18N
         getContentPane().add(jLabelIntermediaire, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -302,6 +316,7 @@ public class FChoixJeu extends javax.swing.JDialog {
     }//GEN-LAST:event_RadioBouton6x6ActionPerformed
 
     private void bJouerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bJouerActionPerformed
+        NomJoueur = JPseudo.getText();
         
         Tgrille=TgrilleSelect();
         Elmax=ElmaxSelect();
@@ -347,6 +362,10 @@ public class FChoixJeu extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_RadioBouton5x5ActionPerformed
 
+    private void JPseudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JPseudoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JPseudoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -391,6 +410,7 @@ public class FChoixJeu extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField JPseudo;
     private javax.swing.JRadioButton RadioBouton3x3;
     private javax.swing.JRadioButton RadioBouton4x4;
     private javax.swing.JRadioButton RadioBouton5x5;

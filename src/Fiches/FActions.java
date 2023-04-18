@@ -18,12 +18,14 @@ import java.util.logging.Logger;
 import jeu_isotopic_256.Jouer;
 
 
+
 public class FActions extends javax.swing.JDialog {
 
     /**
      * Creates new form FActions
      */
-    
+    private String NomJoueur;
+
     
     
     public FActions(java.awt.Frame parent, boolean modal) {
@@ -128,11 +130,14 @@ public class FActions extends javax.swing.JDialog {
        
             
     // TODO add your handling code here:
+    FChoixJeu fChoix=((FAccueil)getParent()).getFichChoix();
+    NomJoueur=fChoix.getNomJoueur();
+    System.out.println(NomJoueur);
     bQuitterSave.setVisible(false);
     bSauv.setVisible(false);
     FJouer f=((FAccueil)getParent()).getFichJouer();
     try {
-        f.getPartie().SavePartie(f.getELmaxNom());
+        f.getPartie().SavePartie(f.getELmaxNom(),NomJoueur);
     } catch (IOException ex) {
         Logger.getLogger(FActions.class.getName()).log(Level.SEVERE, null, ex);
     }
