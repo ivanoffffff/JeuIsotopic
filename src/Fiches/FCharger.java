@@ -4,6 +4,7 @@
  */
 package Fiches;
 
+import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
@@ -21,8 +22,11 @@ public class FCharger extends javax.swing.JDialog {
     
     public FCharger(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        
         initComponents();
+        setLocationRelativeTo(null);
+        setShape(new RoundRectangle2D.Double(0,0,getWidth(),getHeight(),50,50));
+        jErreur.setVisible(false);
+
         
         
     }
@@ -45,29 +49,33 @@ public class FCharger extends javax.swing.JDialog {
         bRetour = new javax.swing.JButton();
         bCharger1 = new javax.swing.JButton();
         JPseudo = new javax.swing.JTextField();
+        jErreur = new javax.swing.JLabel();
         JFondCharger = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(320, 320));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bRetour.setBackground(new java.awt.Color(255, 0, 255));
         bRetour.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         bRetour.setForeground(new java.awt.Color(255, 255, 255));
         bRetour.setText("Retour");
+        bRetour.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         bRetour.setFocusable(false);
         bRetour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bRetourActionPerformed(evt);
             }
         });
-        getContentPane().add(bRetour, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 100, 40));
+        getContentPane().add(bRetour, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 100, 40));
 
         bCharger1.setBackground(new java.awt.Color(102, 102, 255));
         bCharger1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         bCharger1.setForeground(new java.awt.Color(255, 255, 255));
         bCharger1.setText("Charger");
         bCharger1.setActionCommand("Charger");
-        bCharger1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        bCharger1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         bCharger1.setFocusable(false);
         bCharger1.setMaximumSize(new java.awt.Dimension(130, 25));
         bCharger1.setMinimumSize(new java.awt.Dimension(130, 25));
@@ -77,7 +85,7 @@ public class FCharger extends javax.swing.JDialog {
                 bCharger1ActionPerformed(evt);
             }
         });
-        getContentPane().add(bCharger1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 110, 40));
+        getContentPane().add(bCharger1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 110, 40));
 
         JPseudo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         JPseudo.addActionListener(new java.awt.event.ActionListener() {
@@ -85,10 +93,16 @@ public class FCharger extends javax.swing.JDialog {
                 JPseudoActionPerformed(evt);
             }
         });
-        getContentPane().add(JPseudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 140, 30));
+        getContentPane().add(JPseudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 140, 30));
 
-        JFondCharger.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Fond_FActions.gif"))); // NOI18N
-        getContentPane().add(JFondCharger, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 270));
+        jErreur.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jErreur.setForeground(new java.awt.Color(204, 0, 0));
+        jErreur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Attention2.png"))); // NOI18N
+        jErreur.setText("️Veuillez entrer un pseudo !!");
+        getContentPane().add(jErreur, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 330, 50));
+
+        JFondCharger.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Fond_FCharger_.gif"))); // NOI18N
+        getContentPane().add(JFondCharger, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -102,9 +116,11 @@ public class FCharger extends javax.swing.JDialog {
     private void bCharger1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCharger1ActionPerformed
         // TODO add your handling code here:
         NomJoueurCharge = JPseudo.getText();
-        if (JPseudo.getText()==null){
-            JOptionPane.showMessageDialog(this, "Veuillez entrer un pseudo valide");
+        if (JPseudo.getText().equals("")){
+            //JOptionPane.showMessageDialog(this, "Veuillez entrer un pseudo valide");
+            jErreur.setVisible(true);
         }
+        else{
         FJouer fJouer=((FAccueil)getParent()).getFichJouer();
         FActions fActions=((FAccueil)getParent()).getFichActions();
         this.setVisible(false);
@@ -115,6 +131,7 @@ public class FCharger extends javax.swing.JDialog {
         }
         fActions.setVisible(true);
         fJouer.setVisible(true);
+        }
     }//GEN-LAST:event_bCharger1ActionPerformed
 
     private void JPseudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JPseudoActionPerformed
@@ -168,6 +185,7 @@ public class FCharger extends javax.swing.JDialog {
     private javax.swing.JTextField JPseudo;
     private javax.swing.JButton bCharger1;
     private javax.swing.JButton bRetour;
+    private javax.swing.JLabel jErreur;
     // End of variables declaration//GEN-END:variables
 
     

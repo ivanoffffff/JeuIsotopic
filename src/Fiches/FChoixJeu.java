@@ -31,6 +31,7 @@ public class FChoixJeu extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE );
         setLocationRelativeTo(null);
         this.setTitle("CHOIX DU JOUEUR");
+        jErreur.setVisible(false);
         RadioBouton4x4.setOpaque(false);
         RadioBouton3x3.setOpaque(false);
         RadioBouton5x5.setOpaque(false);
@@ -102,6 +103,7 @@ public class FChoixJeu extends javax.swing.JDialog {
         RadioBoutonGe512 = new javax.swing.JRadioButton();
         RadioBouttonOg1024 = new javax.swing.JRadioButton();
         JPseudo = new javax.swing.JTextField();
+        jErreur = new javax.swing.JLabel();
         jLabelIntermediaire = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -294,6 +296,12 @@ public class FChoixJeu extends javax.swing.JDialog {
         });
         getContentPane().add(JPseudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 105, 140, 30));
 
+        jErreur.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jErreur.setForeground(new java.awt.Color(204, 0, 0));
+        jErreur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Attention2.png"))); // NOI18N
+        jErreur.setText("️Veuillez entrer un pseudo !!");
+        getContentPane().add(jErreur, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 135, 330, 50));
+
         jLabelIntermediaire.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Fond_FChoix_.gif"))); // NOI18N
         getContentPane().add(jLabelIntermediaire, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -317,27 +325,32 @@ public class FChoixJeu extends javax.swing.JDialog {
 
     private void bJouerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bJouerActionPerformed
         NomJoueur = JPseudo.getText();
-        
-        Tgrille=TgrilleSelect();
-        Elmax=ElmaxSelect();
-        switch (Elmax) {
-            case 128 -> ElmaxNom="Sn";
-            case 256 -> ElmaxNom="N";
-            case 512 -> ElmaxNom="Ge";
-            case 1024 -> ElmaxNom="Og";
-            default -> {
-            }
+        if (NomJoueur.equals("")){
+            jErreur.setVisible(true);
         }
-        
-        int retour= JOptionPane.showConfirmDialog(this,"Vous avez choisi une grille "+Tgrille+"x"+Tgrille+" et l'élément "+ElmaxNom+Elmax+" à atteindre ","Confirmation choix",YES_NO_OPTION);
-        
-        if (retour==YES_OPTION){
-            FJouer f=((FAccueil)getParent()).getFichJouer();
-            FActions fAct=((FAccueil)getParent()).getFichActions();
-            f.Init(Tgrille,ElmaxNom);
-            this.setVisible(false);
-            fAct.setVisible(true);
-            f.setVisible(true);
+        else{
+            jErreur.setVisible(false);
+            Tgrille=TgrilleSelect();
+            Elmax=ElmaxSelect();
+            switch (Elmax) {
+                case 128 -> ElmaxNom="Sn";
+                case 256 -> ElmaxNom="N";
+                case 512 -> ElmaxNom="Ge";
+                case 1024 -> ElmaxNom="Og";
+                default -> {
+                }
+            }
+
+            int retour= JOptionPane.showConfirmDialog(this,"Vous avez choisi une grille "+Tgrille+"x"+Tgrille+" et l'élément "+ElmaxNom+Elmax+" à atteindre ","Confirmation choix",YES_NO_OPTION);
+
+            if (retour==YES_OPTION){
+                FJouer f=((FAccueil)getParent()).getFichJouer();
+                FActions fAct=((FAccueil)getParent()).getFichActions();
+                f.Init(Tgrille,ElmaxNom);
+                this.setVisible(false);
+                fAct.setVisible(true);
+                f.setVisible(true);
+            }
         }
 
     }//GEN-LAST:event_bJouerActionPerformed
@@ -423,6 +436,7 @@ public class FChoixJeu extends javax.swing.JDialog {
     private javax.swing.ButtonGroup bGroupeTaille;
     private javax.swing.JButton bJouer;
     private javax.swing.JButton bRetour;
+    private javax.swing.JLabel jErreur;
     private javax.swing.JLabel jLabelIntermediaire;
     private javax.swing.JPanel jPanelBoutonElmax;
     private javax.swing.JPanel jPanelBoutonTgrille;
