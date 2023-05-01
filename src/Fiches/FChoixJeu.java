@@ -300,7 +300,7 @@ public class FChoixJeu extends javax.swing.JDialog {
         jErreur.setForeground(new java.awt.Color(204, 0, 0));
         jErreur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Attention2.png"))); // NOI18N
         jErreur.setText("️Veuillez entrer un pseudo !!");
-        getContentPane().add(jErreur, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 135, 330, 50));
+        getContentPane().add(jErreur, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
 
         jLabelIntermediaire.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Fond_FChoix_.gif"))); // NOI18N
         getContentPane().add(jLabelIntermediaire, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

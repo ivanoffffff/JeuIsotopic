@@ -5,9 +5,7 @@
 package Fiches;
 
 import java.awt.geom.RoundRectangle2D;
-import java.io.IOException;
-import javax.swing.JOptionPane;
-
+import javax.swing.JLabel;
 /**
  *
  * @author ivan5
@@ -26,14 +24,17 @@ public class FCharger extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         setShape(new RoundRectangle2D.Double(0,0,getWidth(),getHeight(),50,50));
         jErreur.setVisible(false);
-
-        
-        
+        JInvalidePseudo.setVisible(false);
     }
 
     public String getNomJoueurCharge() {
         return NomJoueurCharge;
     }
+
+    public JLabel getJInvalidePseudo() {
+        return JInvalidePseudo;
+    }
+    
     
     
 
@@ -50,6 +51,7 @@ public class FCharger extends javax.swing.JDialog {
         bCharger1 = new javax.swing.JButton();
         JPseudo = new javax.swing.JTextField();
         jErreur = new javax.swing.JLabel();
+        JInvalidePseudo = new javax.swing.JLabel();
         JFondCharger = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -101,6 +103,12 @@ public class FCharger extends javax.swing.JDialog {
         jErreur.setText("️Veuillez entrer un pseudo !!");
         getContentPane().add(jErreur, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 330, 50));
 
+        JInvalidePseudo.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        JInvalidePseudo.setForeground(new java.awt.Color(204, 0, 0));
+        JInvalidePseudo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Attention2.png"))); // NOI18N
+        JInvalidePseudo.setText("Aucune sauvegarde à ce nom !!");
+        getContentPane().add(JInvalidePseudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 163, -1, -1));
+
         JFondCharger.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Fond_FCharger_.gif"))); // NOI18N
         getContentPane().add(JFondCharger, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 320));
 
@@ -109,6 +117,7 @@ public class FCharger extends javax.swing.JDialog {
 
     private void bRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetourActionPerformed
         // TODO add your handling code here:
+        jErreur.setVisible(false);
         this.getParent().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bRetourActionPerformed
@@ -117,20 +126,13 @@ public class FCharger extends javax.swing.JDialog {
         // TODO add your handling code here:
         NomJoueurCharge = JPseudo.getText();
         if (JPseudo.getText().equals("")){
-            //JOptionPane.showMessageDialog(this, "Veuillez entrer un pseudo valide");
+            JInvalidePseudo.setVisible(false);
             jErreur.setVisible(true);
         }
         else{
-        FJouer fJouer=((FAccueil)getParent()).getFichJouer();
-        FActions fActions=((FAccueil)getParent()).getFichActions();
-        this.setVisible(false);
-        try {
+            jErreur.setVisible(false);
+            FJouer fJouer=((FAccueil)getParent()).getFichJouer();
             fJouer.Init();
-        } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(FCharger.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        fActions.setVisible(true);
-        fJouer.setVisible(true);
         }
     }//GEN-LAST:event_bCharger1ActionPerformed
 
@@ -182,6 +184,7 @@ public class FCharger extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JFondCharger;
+    private javax.swing.JLabel JInvalidePseudo;
     private javax.swing.JTextField JPseudo;
     private javax.swing.JButton bCharger1;
     private javax.swing.JButton bRetour;

@@ -433,7 +433,7 @@ public class Jouer {
         Sauv.close();
     }
  
-    public String ChargerPartie(String NomJoueur) throws FileNotFoundException, IOException{
+    public String ChargerPartie(String NomJoueur) throws IOException{
         FileReader Sauv=new FileReader("Sauv."+NomJoueur+".txt");
         BufferedReader br=new BufferedReader(Sauv);
         String ligne1=br.readLine();

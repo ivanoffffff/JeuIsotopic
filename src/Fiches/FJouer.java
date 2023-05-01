@@ -10,11 +10,16 @@ import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.RoundRectangle2D;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.DEFAULT_OPTION;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import static javax.swing.JOptionPane.NO_OPTION;
+import static javax.swing.JOptionPane.OK_CANCEL_OPTION;
 import static javax.swing.JOptionPane.YES_NO_OPTION;
 import static javax.swing.JOptionPane.YES_OPTION;
 import javax.swing.JPanel;
@@ -111,9 +116,12 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void Init() throws IOException{
+    public void Init() {
+        try{
         Partie=new Jouer();
+        FActions fActions=((FAccueil)getParent()).getFichActions();
         FCharger fCharger=((FAccueil)getParent()).getFichCharger();
+        fCharger.getJInvalidePseudo().setVisible(false);
         String NomJoueurCharge = fCharger.getNomJoueurCharge();
         ELmaxNom=Partie.ChargerPartie(NomJoueurCharge);
         Tgrille=Partie.getTgrille();
@@ -122,6 +130,19 @@ public class FJouer extends javax.swing.JDialog implements KeyListener {
         Partie.afficher(tabLab);
         jScore.setText(Long.toString(Partie.getScore()));
         jElmax.setText(ELmaxNom);
+        
+        fCharger.setVisible(false);
+        fActions.setVisible(true);
+        this.setVisible(true);
+        }
+        catch (FileNotFoundException ex ) {
+            FCharger fCharger=((FAccueil)getParent()).getFichCharger();
+            fCharger.getJInvalidePseudo().setVisible(true);
+           // JOptionPane.showConfirmDialog(this,"Sauvegarde inexistante pour ce pseudo\nVeuillez entrer un pseudo valide","Aucune Sauvegarde",DEFAULT_OPTION,ERROR_MESSAGE,imageIcon);
+        }
+        catch (IOException ex){
+            
+        }
     }
     
     public void creation(){
