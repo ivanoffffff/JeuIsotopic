@@ -5,16 +5,10 @@
 package jeu_isotopic_256;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
-import javax.swing.Icon;
 import javax.swing.JLabel;
 /*
  Andre Léonard
@@ -27,7 +21,6 @@ import javax.swing.JLabel;
 public class Jouer {
     
     private long Score=0;
-    private final static String PartieSauv="PartieSauv.txt";
     int Tgrille;
     private Element[][] grille;
     final static Element H=new Element("H",2);
@@ -44,6 +37,8 @@ public class Jouer {
     String ElMaxNom;
     private final static Element ClassementElement[]={H,He,Be,O,P,Ni,Sn,N,Ge,Og}; 
 
+/* constructeur de la classe jouer qui permet de créer une grille vide à 
+partir d'un tableau de taille Tgrille pouvant contenir des éléments*/
     public Jouer(int Tgrille) {
         this.Tgrille=Tgrille;
         grille=new Element[Tgrille][Tgrille];
@@ -54,10 +49,20 @@ public class Jouer {
         }
     }
     
+/*Constructeur appelé lorsque le joueuer décide de charger une partie*/
     public Jouer() {
     }
     
-
+    public int getTgrille() {
+        return Tgrille;
+    }
+    
+    public long getScore() {
+        return Score;
+    }
+     
+/*Cette méthode qui prend en entrer la taille de la grille en entrée et permet 
+de placer un élément He et H aléatoirement sur la grille de jeu*/
     public void debuter(int Tgrille,String ElMaxNom){
         this.ElMaxNom=ElMaxNom;
         Random line = new Random();
@@ -76,11 +81,13 @@ public class Jouer {
         }
         Score=0;
     }
-    
+/*Méthode débuter appelée lorsque l'utilisateur souhaite charger une partie*/
     public void debuter(String NomJoueur) throws IOException{
         ChargerPartie(NomJoueur);
     }
-    
+
+/*Méthode créée pour effectuer des tests sur la grille lors de la création
+du programme*/    
     public void debuterTest(int Tgrille){
         grille[0][0]=H;
         grille[1][0]=He;
@@ -92,7 +99,9 @@ public class Jouer {
         grille[1][2]=O;
         Score=0;
     }
-   
+
+/*Méthode permettant d'afficher la grille à partir du tableau d'éléments dans 
+la console*/
     public void afficher(){
         System.out.println();
         for (int i=0;i<grille.length;i++){
@@ -105,6 +114,8 @@ public class Jouer {
         System.out.println();
     }
 
+/*Méthode permettant d'afficher la grille sous forme de JLabel à partir du 
+tableau d'éléments dans l'inteface graphique*/
      public void afficher(JLabel [][]tablab){
         for (int i=0;i<tablab.length;i++){
             for (int k=0;k<tablab[i].length;k++){
@@ -117,44 +128,29 @@ public class Jouer {
             }
         }
     }
-    
+ 
+/*Méthode permettant de vérifier si une case est vide*/ 
     public boolean verifVide(int a,int b){
-        if (grille[a][b].equals(vide))
-            return true;
-        else
-            return false;
+        return grille[a][b].equals(vide);
     }
-    
+ 
+/*Méthode qui permet de vérifier q'un déplacement de l'élément est possible
+dans tous les sens de déplacement*/
     public boolean verifAdjacente(int a, int b, String direction){
         if (direction.equals("D")==true){
-            if (verifVide(a,b+1)){
-                return false;
-            }
-            else 
-                return true;
+            return !verifVide(a,b+1);
         }
         else if (direction.equals("Q")==true){
-            if (verifVide(a,b-1)){
-                return false;
-            }
-            else 
-                return true;
+            return !verifVide(a,b-1);
         }
         else if (direction.equals("Z")==true){
-            if (verifVide(a-1,b)){
-                return false;
-            }
-            else 
-                return true;
+            return !verifVide(a-1,b);
         }
         else{
-            if (verifVide(a+1,b)){
-                return false;
-            }
-            else 
-                return true;
+            return !verifVide(a+1,b);
         }
     }
+
     
     public boolean deplacerG(){
         boolean deplacement=false;
@@ -319,16 +315,9 @@ public class Jouer {
         }
         return fusion;
     }
-    
-    public long Score(long Sc){
-        Score=Score+Sc;
-        return Score;
-    }
 
-    public long getScore() {
-        return Score;
-    }
-
+/*Méthode permettant la gestion des déplacements,des fusions simples et des 
+fusions en cascade en fonction du choix de direction du joueur*/
     public boolean AplDeplacementFusion(String direction){
         boolean deplacement=true;
         boolean fusion=true;
@@ -398,7 +387,8 @@ public class Jouer {
         ajoutElement();
         return true;
     }
-    
+/*Méthode qui ajoute un élément He ou H aléatoirement dans la grille à chaque
+tour de jeu */    
     public void ajoutElement(){
         Random line = new Random();
         Random ElAjout= new Random();
@@ -420,6 +410,8 @@ public class Jouer {
         }
     }
 
+/* Méthode qui permet de créer un fichier texte avec le nom du joueur et de 
+sauvegarder les informations de la partie (2lément max, taille, score, grille*/    
     public void SavePartie(String max, String NomJoueur) throws IOException{
         
         FileWriter Sauv=new FileWriter("Sauv."+NomJoueur+".txt");
@@ -432,7 +424,8 @@ public class Jouer {
         }   
         Sauv.close();
     }
- 
+/* Méthode qui permet de lire les informations contenues dans le fichier
+texte afin de pouvoir charger une partie commencée */ 
     public String ChargerPartie(String NomJoueur) throws IOException{
         FileReader Sauv=new FileReader("Sauv."+NomJoueur+".txt");
         BufferedReader br=new BufferedReader(Sauv);
@@ -519,9 +512,7 @@ public class Jouer {
         
     }
 
-    public int getTgrille() {
-        return Tgrille;
-    }
+   
     
     
 }
