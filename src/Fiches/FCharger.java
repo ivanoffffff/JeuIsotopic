@@ -4,6 +4,9 @@
  */
 package Fiches;
 
+import java.awt.Frame;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.JLabel;
 /**
@@ -18,11 +21,15 @@ public class FCharger extends javax.swing.JDialog {
     
     private String NomJoueurCharge;
     
+    private Frame parent;
+    
     public FCharger(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         setShape(new RoundRectangle2D.Double(0,0,getWidth(),getHeight(),50,50));
+        //this.addKeyListener(this);
+        
         jErreur.setVisible(false);
         JInvalidePseudo.setVisible(false);
     }
@@ -34,6 +41,7 @@ public class FCharger extends javax.swing.JDialog {
     public JLabel getJInvalidePseudo() {
         return JInvalidePseudo;
     }
+    
     
     
     
@@ -76,7 +84,6 @@ public class FCharger extends javax.swing.JDialog {
         bCharger1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         bCharger1.setForeground(new java.awt.Color(255, 255, 255));
         bCharger1.setText("Charger");
-        bCharger1.setActionCommand("Charger");
         bCharger1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         bCharger1.setFocusable(false);
         bCharger1.setMaximumSize(new java.awt.Dimension(130, 25));
@@ -93,6 +100,11 @@ public class FCharger extends javax.swing.JDialog {
         JPseudo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JPseudoActionPerformed(evt);
+            }
+        });
+        JPseudo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JPseudoKeyPressed(evt);
             }
         });
         getContentPane().add(JPseudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 140, 30));
@@ -124,6 +136,14 @@ public class FCharger extends javax.swing.JDialog {
 
     private void bCharger1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCharger1ActionPerformed
         // TODO add your handling code here:
+        Charger();
+    }//GEN-LAST:event_bCharger1ActionPerformed
+
+    private void JPseudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JPseudoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JPseudoActionPerformed
+
+    public void Charger(){
         NomJoueurCharge = JPseudo.getText();
         if (JPseudo.getText().equals("")){
             JInvalidePseudo.setVisible(false);
@@ -134,11 +154,15 @@ public class FCharger extends javax.swing.JDialog {
             FJouer fJouer=((FAccueil)getParent()).getFichJouer();
             fJouer.Init();
         }
-    }//GEN-LAST:event_bCharger1ActionPerformed
-
-    private void JPseudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JPseudoActionPerformed
+    }
+    
+    private void JPseudoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JPseudoKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JPseudoActionPerformed
+        int keyCode = evt.getKeyCode();
+        if (keyCode== KeyEvent.VK_ENTER){
+            Charger();
+        }
+    }//GEN-LAST:event_JPseudoKeyPressed
 
     /**
      * @param args the command line arguments

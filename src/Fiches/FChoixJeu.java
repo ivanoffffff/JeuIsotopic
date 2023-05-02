@@ -4,6 +4,7 @@
  */
 package Fiches;
 
+import java.awt.event.KeyEvent;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.YES_NO_OPTION;
@@ -76,6 +77,37 @@ public class FChoixJeu extends javax.swing.JDialog {
     
     public String getNomJoueur(){
         return NomJoueur;
+    }
+    
+    public void Jouer(){
+        NomJoueur = JPseudo.getText();
+        if (NomJoueur.equals("")){
+            jErreur.setVisible(true);
+        }
+        else{
+            jErreur.setVisible(false);
+            Tgrille=TgrilleSelect();
+            Elmax=ElmaxSelect();
+            switch (Elmax) {
+                case 128 -> ElmaxNom="Sn";
+                case 256 -> ElmaxNom="N";
+                case 512 -> ElmaxNom="Ge";
+                case 1024 -> ElmaxNom="Og";
+                default -> {
+                }
+            }
+
+            int retour= JOptionPane.showConfirmDialog(this,"Vous avez choisi une grille "+Tgrille+"x"+Tgrille+" et l'élément "+ElmaxNom+Elmax+" à atteindre ","Confirmation choix",YES_NO_OPTION);
+
+            if (retour==YES_OPTION){
+                FJouer f=((FAccueil)getParent()).getFichJouer();
+                FActions fAct=((FAccueil)getParent()).getFichActions();
+                f.Init(Tgrille,ElmaxNom);
+                this.setVisible(false);
+                fAct.setVisible(true);
+                f.setVisible(true);
+            }
+        }
     }
 
 
@@ -294,6 +326,11 @@ public class FChoixJeu extends javax.swing.JDialog {
                 JPseudoActionPerformed(evt);
             }
         });
+        JPseudo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JPseudoKeyPressed(evt);
+            }
+        });
         getContentPane().add(JPseudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 105, 140, 30));
 
         jErreur.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -324,35 +361,7 @@ public class FChoixJeu extends javax.swing.JDialog {
     }//GEN-LAST:event_RadioBouton6x6ActionPerformed
 
     private void bJouerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bJouerActionPerformed
-        NomJoueur = JPseudo.getText();
-        if (NomJoueur.equals("")){
-            jErreur.setVisible(true);
-        }
-        else{
-            jErreur.setVisible(false);
-            Tgrille=TgrilleSelect();
-            Elmax=ElmaxSelect();
-            switch (Elmax) {
-                case 128 -> ElmaxNom="Sn";
-                case 256 -> ElmaxNom="N";
-                case 512 -> ElmaxNom="Ge";
-                case 1024 -> ElmaxNom="Og";
-                default -> {
-                }
-            }
-
-            int retour= JOptionPane.showConfirmDialog(this,"Vous avez choisi une grille "+Tgrille+"x"+Tgrille+" et l'élément "+ElmaxNom+Elmax+" à atteindre ","Confirmation choix",YES_NO_OPTION);
-
-            if (retour==YES_OPTION){
-                FJouer f=((FAccueil)getParent()).getFichJouer();
-                FActions fAct=((FAccueil)getParent()).getFichActions();
-                f.Init(Tgrille,ElmaxNom);
-                this.setVisible(false);
-                fAct.setVisible(true);
-                f.setVisible(true);
-            }
-        }
-
+        Jouer();
     }//GEN-LAST:event_bJouerActionPerformed
 
     private void RadioBoutonN256ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioBoutonN256ActionPerformed
@@ -378,6 +387,14 @@ public class FChoixJeu extends javax.swing.JDialog {
     private void JPseudoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JPseudoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JPseudoActionPerformed
+
+    private void JPseudoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JPseudoKeyPressed
+        // TODO add your handling code here:
+        int keyCode = evt.getKeyCode();
+        if (keyCode== KeyEvent.VK_ENTER){ 
+            Jouer();
+        }
+    }//GEN-LAST:event_JPseudoKeyPressed
 
     /**
      * @param args the command line arguments
